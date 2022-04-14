@@ -1,11 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "CollisionResult.h"
-#include "AABB.h";
 
-using namespace sf;
+// forward refernce
+
+
 
 namespace sfp {
+	class AABB;
+
 	class Circle: public PhysicsObject
 	{
 	private:
@@ -13,8 +16,8 @@ namespace sfp {
 		float radius;
 	public:
 		bool intersectsWith(Circle other);
-		CollisionResult collideWith(Circle &other);
 		CollisionResult collideWith(AABB& other);
+		CollisionResult collideWith(Circle &other);
 		Vector2f getPosition();
 		float getRadius();
 	};

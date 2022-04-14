@@ -2,11 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "PhysicsObject.h"
 #include "CollisionResult.h"
-#include "Circle.h"
 
-using namespace sf;
+
+
 
 namespace sfp {
+	class Circle;
+
 	class AABB: public PhysicsObject
 	{
 	private:

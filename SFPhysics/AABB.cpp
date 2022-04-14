@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "AABB.h"
 #include <math.h>
+#include "Circle.h"
 
 
 
@@ -92,7 +93,7 @@ sfp::CollisionResult sfp::AABB::collideWith(Circle& other) {
     float y_extent = (max.y - min.y) / 2;
 
     // Clamp point to edges of the AABB
-    Vector2f closest(
+    closest = Vector2f(
         clamp(closest.x, -x_extent, x_extent),
         clamp(-y_extent, y_extent, closest.y));
 
