@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "AABB.h"
 #include <math.h>
-#include "Circle.h"
+#include "CircleBounds.h"
 
 
 
@@ -77,10 +77,10 @@ static double clamp(double d, double min, double max) {
     return t > max ? max : t;
 }
 
-sfp::CollisionResult sfp::AABB::collideWith(Circle& other) {
+sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
         // Setup a couple pointers to each object
   
-    Circle* B = &other;
+    CircleBounds* B = &other;
 
     // Vector from A to B
     Vector2f n = B->getPosition() - getPosition();

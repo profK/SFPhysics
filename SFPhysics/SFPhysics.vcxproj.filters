@@ -24,13 +24,13 @@
     <ClInclude Include="World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsObject.h">
+    <ClInclude Include="Bounds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AABB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Circle.h">
+    <ClInclude Include="CircleBounds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CollisionResult.h">
@@ -47,7 +47,7 @@
     <ClCompile Include="World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp">
+    <ClCompile Include="Bounds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AABB.cpp">

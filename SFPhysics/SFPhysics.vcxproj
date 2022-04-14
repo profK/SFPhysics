@@ -155,11 +155,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
-    <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleBounds.h" />
     <ClInclude Include="CollisionResult.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="Bounds.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +172,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="Bounds.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 
 namespace sfp {
-	class PhysicsObject
+	class Bounds
 	{
 	};
 }

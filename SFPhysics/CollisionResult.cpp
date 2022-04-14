@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CollisionResult.h"
 
-sfp::CollisionResult::CollisionResult(PhysicsObject& object1, PhysicsObject& object2):
+sfp::CollisionResult::CollisionResult(Bounds& object1, Bounds& object2):
 	object1(object1),object2(object2)
 {
 	hasCollided = false;
@@ -9,7 +9,7 @@ sfp::CollisionResult::CollisionResult(PhysicsObject& object1, PhysicsObject& obj
 	normal = Vector2f(0, 0);
 }
 
-sfp::CollisionResult::CollisionResult(PhysicsObject& object1, PhysicsObject& object2, 
+sfp::CollisionResult::CollisionResult(Bounds& object1, Bounds& object2,
 	float penertration, Vector2f normal):
 	object1(object1),object2(object2),penetration(penetration),normal(normal)
 {

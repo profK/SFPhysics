@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "PhysicsObject.h"
+#include "Bounds.h"
 
 using namespace sf;
 
@@ -8,13 +8,13 @@ namespace sfp {
 	struct CollisionResult
 	{
 		bool hasCollided;
-		PhysicsObject &object1;
-		PhysicsObject &object2;
+		Bounds &object1;
+		Bounds &object2;
 		float penetration;
 		Vector2f normal;
 
-		CollisionResult(PhysicsObject& object1, PhysicsObject& object2); // no collision
-		CollisionResult(PhysicsObject& object1, PhysicsObject& object2,float penertration,
+		CollisionResult(Bounds& object1, Bounds& object2); // no collision
+		CollisionResult(Bounds& object1, Bounds& object2,float penertration,
 			Vector2f normal); // collision occured
 	};
 }

@@ -1,22 +1,22 @@
 #include "pch.h"
-#include "Circle.h"
+#include "CircleBounds.h"
 #include <math.h>
 #include "AABB.h"
 
 using namespace std;
 
-bool sfp::Circle::intersectsWith(Circle other)
+bool sfp::CircleBounds::intersectsWith(CircleBounds &other)
 {
 	float r = radius + other.radius;
 	r *= r;
 	return r < (powf(position.x + other.position.x,2) + powf(position.y + other.position.y, 2));
 }
 
-sfp::CollisionResult sfp::Circle::collideWith(Circle &other)
+sfp::CollisionResult sfp::CircleBounds::collideWith(CircleBounds& other)
 {
     // Setup a couple pointers to each object
-    Circle* A = this;
-    Circle* B = &other;
+    CircleBounds* A = this;
+    CircleBounds* B = &other;
     
 
     // Vector from A to B
@@ -55,17 +55,17 @@ sfp::CollisionResult sfp::Circle::collideWith(Circle &other)
     }
 }
 
-sfp::CollisionResult sfp::Circle::collideWith(AABB& other)
+sfp::CollisionResult sfp::CircleBounds::collideWith(AABB& other)
 {
     return other.collideWith(*this);
 }
 
-Vector2f sfp::Circle::getPosition()
+Vector2f sfp::CircleBounds::getPosition()
 {
     return position;
 }
 
-float sfp::Circle::getRadius()
+float sfp::CircleBounds::getRadius()
 {
     return radius;
 }

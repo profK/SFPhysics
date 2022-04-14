@@ -1,15 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "PhysicsObject.h"
+#include "Bounds.h"
 #include "CollisionResult.h"
 
 
 
 
 namespace sfp {
-	class Circle;
+	class CircleBounds;
 
-	class AABB: public PhysicsObject
+	class AABB: public Bounds
 	{
 	private:
 		Vector2f min;
@@ -17,7 +17,7 @@ namespace sfp {
 	public:
 		bool intersectsWith(AABB other);
 		CollisionResult collideWith(AABB &other);
-		CollisionResult collideWith(Circle& other);
+		CollisionResult collideWith(CircleBounds& other);
 		Vector2f getPosition() {
 			return (min+max)/2.0f;
 		}
