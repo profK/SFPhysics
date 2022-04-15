@@ -10,7 +10,7 @@ sfp::CollisionResult::CollisionResult(Bounds& object1, Bounds& object2):
 }
 
 sfp::CollisionResult::CollisionResult(Bounds& object1, Bounds& object2,
-	float penertration, Vector2f normal):
+	float penetration, Vector2f normal):
 	object1(object1),object2(object2),penetration(penetration),normal(normal)
 {
 	hasCollided = true;

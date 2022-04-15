@@ -5,6 +5,11 @@
 
 using namespace std;
 
+sfp::CircleBounds::CircleBounds(Vector2f position, float radius):
+    position(position), radius(radius)
+{
+}
+
 bool sfp::CircleBounds::intersectsWith(CircleBounds &other)
 {
 	float r = radius + other.radius;
@@ -24,9 +29,9 @@ sfp::CollisionResult sfp::CircleBounds::collideWith(CircleBounds& other)
     float distSquared = powf(n.x, 2) + powf(n.y, 2);
 
     float r = A->radius + B->radius;
-    r *= r;
+   
 
-    if (distSquared > r) {
+    if (distSquared > pow(r,2)) {
         return CollisionResult(*this, other);
     }
 

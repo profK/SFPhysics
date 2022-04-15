@@ -5,6 +5,11 @@
 
 
 
+sfp::AABB::AABB(Vector2f min, Vector2f max):
+    min(min),max(max)
+{
+}
+
 bool sfp::AABB::intersectsWith(AABB other)
 {
     // Exit with no intersection if found separated along an axis
@@ -35,7 +40,7 @@ sfp::CollisionResult sfp::AABB::collideWith(AABB &other)
 // SAT test on x axis
     if (x_overlap > 0)
     {
-    // Calculate half extents along x axis for each object
+    // Calculate half extents along y axis for each object
         float a_extent = (max.y - min.y) / 2;
         float b_extent = (other.max.y - other.min.y) / 2;
 
