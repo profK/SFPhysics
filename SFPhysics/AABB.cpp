@@ -85,22 +85,23 @@ static double clamp(double d, double min, double max) {
 sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
         // Setup a couple pointers to each object
   
-    CircleBounds* B = &other;
+    // Setup a couple pointers to each object
+    Bounds* A = this;
+    Bounds* B = &other;
 
-    // Vector from A to B
-    Vector2f n = B->getPosition() - getPosition();
+        // Vector from A to B
+    Vector2f n = B->getPosition() - A->getPosition();
 
     // Closest point on A to center of B
     Vector2f closest = n;
 
-    // Calculate half extents along each axis
+        // Calculate half extents along each axis
     float x_extent = (max.x - min.x) / 2;
     float y_extent = (max.y - min.y) / 2;
 
-    // Clamp point to edges of the AABB
-    closest = Vector2f(
-        clamp(closest.x, -x_extent, x_extent),
-        clamp(-y_extent, y_extent, closest.y));
+        // Clamp point to edges of the AABB
+    closest.x = clamp(closest.x,-x_extent, x_extent);
+    closest.y = clamp(closest.y,-y_extent, y_extent);
 
     bool inside = false;
 
@@ -111,56 +112,53 @@ sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
         inside = true;
 
             // Find closest axis
-            if (abs(n.x) > abs(n.y))
-            {
-                // Clamp to closest extent
-                if (closest.x > 0) {
-                    closest.x = x_extent;
-                }
-                else {
-                    closest.x = -x_extent;
-                }
-                   
-            }
+        if (abs(n.x) > abs(n.y))
+        {
+            // Clamp to closest extent
+            if (closest.x > 0)
+                closest.x = x_extent;
+            else
+                closest.x = -x_extent;
+        }
 
         // y axis is shorter
+        else
+        {
+            // Clamp to closest extent
+            if (closest.y > 0)
+                closest.y = y_extent;
             else
-            {
-                // Clamp to closest extent
-                if (closest.y > 0)
-                {
-                    closest.y = y_extent;
-                }
-                else {
-                    closest.y = -y_extent;
-                }
-            }
+                closest.y = -y_extent;
+        }
     }
 
     Vector2f normal = n - closest;
     double d = pow(normal.x, 2) + pow(normal.y, 2);
-    double r = B->getRadius();
+    double r = other.getRadius();
 
-        // Early out of the radius is shorter than distance to closest point and
-        // Circle not inside the AABB
-    if ((d > (r * r)) && !inside) {
-        return CollisionResult(*this, *B);
-    }
-       
+    // Early out of the radius is shorter than distance to closest point and
+    // Circle not inside the AABB
+    if (d > r * r && !inside)
+        return CollisionResult(*this, other);
+
     // Avoided sqrt until we needed
     d = sqrt(d);
 
     // Collision normal needs to be flipped to point outside if circle was
     // inside the AABB
-    float penetration = r - d;
+    n = Vector2f(normal.x / d, normal.y / d);
     if (inside)
     {
-        normal = -n;
+        Vector2f normal = -n;
+        double penetration = r - d;
+        return CollisionResult(*this, other,penetration,normal);
     }
     else
     {
-        normal = n;
+        Vector2f normal = n;
+        double penetration = r - d;
+        return CollisionResult(*this, other, penetration, normal);
     }
 
-    return CollisionResult(*this, *B, penetration, normal);
+  
 }

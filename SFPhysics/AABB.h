@@ -20,7 +20,7 @@ namespace sfp {
 		CollisionResult collideWith(AABB &other);
 		CollisionResult collideWith(CircleBounds& other);
 		Vector2f getPosition() {
-			return (min+max)/2.0f;
+			return min+(max-min)/2.0f;
 		}
 
 	};
