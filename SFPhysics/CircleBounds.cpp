@@ -63,8 +63,9 @@ sfp::BoundsCollisionResult sfp::CircleBounds::collideWithCircle(CircleBounds& ot
 sfp::BoundsCollisionResult sfp::CircleBounds::collideWithAABB(AABB& other)
 {
     BoundsCollisionResult result= other.collideWithCircle(*this);
-    //TODO: may have to reverse bounds and normal
-    return result; 
+    //have to reverse bounds and normal
+    return BoundsCollisionResult(result.object2,result.object1,
+        result.penetration,result.normal * -1.0f);
 }
 
 Vector2f sfp::CircleBounds::getPosition()
