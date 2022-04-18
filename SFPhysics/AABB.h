@@ -22,6 +22,7 @@ namespace sfp {
 		Vector2f getPosition() {
 			return min+(max-min)/2.0f;
 		}
+		void visualize(RenderWindow& window);
 
 	};
 }

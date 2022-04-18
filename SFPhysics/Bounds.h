@@ -7,6 +7,7 @@ namespace sfp {
 	{
 	public:
 		virtual Vector2f getPosition();
+		virtual void visualize(RenderWindow& windoe);
 	};
 }
 

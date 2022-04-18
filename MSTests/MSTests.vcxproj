@@ -176,6 +176,12 @@
       <Project>{5aae9625-7731-4380-a52c-e43ce8d02f99}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <FileType>Text</FileType>
+    </Font>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\SFML_VS2019.1.0.0\build\SFML_VS2019.targets" Condition="Exists('..\packages\SFML_VS2019.1.0.0\build\SFML_VS2019.targets')" />

@@ -162,3 +162,13 @@ sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
 
   
 }
+
+void sfp::AABB::visualize(RenderWindow& window)
+{
+    RectangleShape shape(max - min);
+    shape.setPosition(min);
+    shape.setFillColor(Color::Transparent);
+    shape.setOutlineColor(Color::White);
+    shape.setOutlineThickness(2);
+    window.draw(shape);
+}

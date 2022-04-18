@@ -74,3 +74,13 @@ float sfp::CircleBounds::getRadius()
 {
     return radius;
 }
+
+void sfp::CircleBounds::visualize(RenderWindow& window)
+{
+    CircleShape shape(radius);
+    shape.setPosition(position);
+    shape.setFillColor(Color::Transparent);
+    shape.setOutlineColor(Color::White);
+    shape.setOutlineThickness(2);
+    window.draw(shape);
+}

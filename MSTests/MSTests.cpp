@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../SFPhysics/CircleBounds.h"
 #include "../SFPhysics/AABB.h"
+#include <SFML/Window.hpp>
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -59,6 +61,25 @@ namespace MSTests
 			Assert::AreEqual(0.0f, result2.normal.y, L"normal Y not 0");
 			Assert::AreEqual(1.0f, result2.normal.x, L"normal X not -1");
 			
+		}
+
+		TEST_METHOD(VisualTest)
+		{
+			CircleBounds c1(Vector2f(100, 100), 50);
+			AABB b1(Vector2f(0, 0), Vector2f(10, 10));
+			AABB b2(Vector2f(20, 20), Vector2f(30, 30));
+			RenderWindow window(VideoMode(800, 600),"Test Window");
+			window.clear(Color::Black);
+			c1.visualize(window);
+			b1.visualize(window);
+			b2.visualize(window);
+			Font fnt;
+			Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
+			Text text("Push space to continue...", fnt);
+			text.setPosition(0, 500);
+			window.draw(text);
+			window.display();
+			while (!Keyboard::isKeyPressed(Keyboard::Space));
 		}
 	};
 }

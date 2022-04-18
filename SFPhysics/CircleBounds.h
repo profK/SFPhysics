@@ -22,6 +22,7 @@ namespace sfp {
 		CollisionResult collideWith(CircleBounds &other);
 		Vector2f getPosition();
 		float getRadius();
+		void visualize(RenderWindow& window);
 	};
 }
 
