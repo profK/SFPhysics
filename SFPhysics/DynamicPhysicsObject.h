@@ -12,7 +12,8 @@ namespace sfp {
         DynamicPhysicsObject(Bounds& bounds);
         void applyImpulse(Vector2f impulse);
         void update(unsigned int deltaMilliseconds);
-
+        Vector2f getVelocity();
+        void setVelocity(Vector2f v);
     };
 
 }

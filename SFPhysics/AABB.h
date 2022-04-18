@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Bounds.h"
-#include "CollisionResult.h"
+#include "BoundsCollisionResult.h"
 
 
 
@@ -17,8 +17,8 @@ namespace sfp {
 	public:
 		AABB(Vector2f min, Vector2f max);
 		bool intersectsWith(AABB other);
-		CollisionResult collideWith(AABB &other);
-		CollisionResult collideWith(CircleBounds& other);
+		BoundsCollisionResult collideWithAABB(AABB &other);
+		BoundsCollisionResult collideWithCircle(CircleBounds& other);
 		Vector2f getPosition();
 		void setPosition(Vector2f center);
 		void visualize(RenderWindow& window);

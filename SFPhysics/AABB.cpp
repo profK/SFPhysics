@@ -20,7 +20,7 @@ bool sfp::AABB::intersectsWith(AABB other)
     return true;
 }
 
-sfp::CollisionResult sfp::AABB::collideWith(AABB &other)
+sfp::BoundsCollisionResult sfp::AABB::collideWithAABB(AABB &other)
 {
    
 // Setup a couple pointers to each object
@@ -60,7 +60,7 @@ sfp::CollisionResult sfp::AABB::collideWith(AABB &other)
                     normal = Vector2f(-1, 0);
                 else
                     normal = Vector2f(0, 0);
-                return CollisionResult(*this, other, x_overlap, normal);
+                return BoundsCollisionResult(*this, other, x_overlap, normal);
             }
             else
             {
@@ -70,11 +70,11 @@ sfp::CollisionResult sfp::AABB::collideWith(AABB &other)
                     normal = Vector2f(0, -1);
                 else
                     normal = Vector2f(0, 1);
-                return CollisionResult(*this, other, y_overlap, normal);
+                return BoundsCollisionResult(*this, other, y_overlap, normal);
             }
         }
     }
-    return CollisionResult(*this, other);
+    return BoundsCollisionResult(*this, other);
 }
 
 static double clamp(double d, double min, double max) {
@@ -82,7 +82,7 @@ static double clamp(double d, double min, double max) {
     return t > max ? max : t;
 }
 
-sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
+sfp::BoundsCollisionResult sfp::AABB::collideWithCircle(CircleBounds& other) {
         // Setup a couple pointers to each object
   
     // Setup a couple pointers to each object
@@ -139,7 +139,7 @@ sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
     // Early out of the radius is shorter than distance to closest point and
     // Circle not inside the AABB
     if (d > r * r && !inside)
-        return CollisionResult(*this, other);
+        return BoundsCollisionResult(*this, other);
 
     // Avoided sqrt until we needed
     d = sqrt(d);
@@ -151,13 +151,13 @@ sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
     {
         Vector2f normal = -n;
         double penetration = r - d;
-        return CollisionResult(*this, other,penetration,normal);
+        return BoundsCollisionResult(*this, other,penetration,normal);
     }
     else
     {
         Vector2f normal = n;
         double penetration = r - d;
-        return CollisionResult(*this, other, penetration, normal);
+        return BoundsCollisionResult(*this, other, penetration, normal);
     }
 
   

@@ -17,3 +17,13 @@ void sfp::DynamicPhysicsObject::update(unsigned int deltaMilliseconds)
 	pos += (velocity * (float)deltaMilliseconds);
 	bounds.setPosition(pos);
 }
+
+Vector2f sfp::DynamicPhysicsObject::getVelocity()
+{
+	return velocity;
+}
+
+void sfp::DynamicPhysicsObject::setVelocity(Vector2f v)
+{
+	velocity = v;
+}
