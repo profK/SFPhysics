@@ -5,6 +5,7 @@
 #include "../SFPhysics/CircleBounds.h"
 #include "../SFPhysics/AABB.h"
 #include <SFML/Window.hpp>
+#include "../SFPhysics/DynamicPhysicsObject.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -65,14 +66,14 @@ namespace MSTests
 
 		TEST_METHOD(VisualTest)
 		{
-			CircleBounds c1(Vector2f(100, 100), 50);
-			AABB b1(Vector2f(0, 0), Vector2f(10, 10));
-			AABB b2(Vector2f(20, 20), Vector2f(30, 30));
+			DynamicPhysicsObject c1(CircleBounds(Vector2f(100, 100), 50));
+			DynamicPhysicsObject b1(AABB(Vector2f(0, 0), Vector2f(10, 10)));
+			DynamicPhysicsObject b2 (AABB(Vector2f(20, 20), Vector2f(30, 30)));
 			RenderWindow window(VideoMode(800, 600),"Test Window");
 			window.clear(Color::Black);
-			c1.visualize(window);
-			b1.visualize(window);
-			b2.visualize(window);
+			c1.visualizeBounds(window);
+			b1.visualizeBounds(window);
+			b2.visualizeBounds(window);
 			Font fnt;
 			Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
 			Text text("Push space to continue...", fnt);

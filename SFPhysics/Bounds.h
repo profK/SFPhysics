@@ -6,8 +6,9 @@ namespace sfp {
 	class Bounds
 	{
 	public:
-		virtual Vector2f getPosition();
-		virtual void visualize(RenderWindow& windoe);
+		virtual Vector2f getPosition() = 0;
+		virtual void setPosition(Vector2f center)=0;
+		virtual void visualize(RenderWindow& window)=0;
 	};
 }
 

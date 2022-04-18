@@ -36,6 +36,15 @@
     <ClInclude Include="CollisionResult.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticPhysicsObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPhysicsObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFPhysics.cpp">
@@ -57,6 +66,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CollisionResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticPhysicsObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPhysicsObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -163,6 +163,21 @@ sfp::CollisionResult sfp::AABB::collideWith(CircleBounds& other) {
   
 }
 
+Vector2f sfp::AABB::getPosition()
+{
+    
+    return min + (max - min) / 2.0f;
+    
+}
+
+void sfp::AABB::setPosition(Vector2f center)
+{
+    //TODO: Check to make sure not off by 1
+    Vector2f halfSize = (max - min)/2.0f;
+    min = center - halfSize;
+    max = center + halfSize;
+}
+
 void sfp::AABB::visualize(RenderWindow& window)
 {
     RectangleShape shape(max - min);

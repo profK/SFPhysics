@@ -19,9 +19,8 @@ namespace sfp {
 		bool intersectsWith(AABB other);
 		CollisionResult collideWith(AABB &other);
 		CollisionResult collideWith(CircleBounds& other);
-		Vector2f getPosition() {
-			return min+(max-min)/2.0f;
-		}
+		Vector2f getPosition();
+		void setPosition(Vector2f center);
 		void visualize(RenderWindow& window);
 
 	};
