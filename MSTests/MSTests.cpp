@@ -7,10 +7,12 @@
 #include <SFML/Window.hpp>
 #include "../SFPhysics/DynamicPhysicsObject.h"
 #include "../SFPhysics/World.h"
-
+#include <ctime> 
+#include <chrono>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sfp;
+using namespace std::chrono;
 
 namespace MSTests
 {
@@ -65,9 +67,10 @@ namespace MSTests
 			
 		}
 
+		
 		TEST_METHOD(VisualTest)
 		{
-			World world(Vector2f(0,0));
+			World world(Vector2f(0, 1));
 			world.AddPhysicsObject(
 				DynamicPhysicsObject(CircleBounds(Vector2f(100, 100), 50)));
 			world.AddPhysicsObject(
@@ -75,16 +78,24 @@ namespace MSTests
 			);
 			world.AddPhysicsObject(
 				DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(30, 30))));
-			RenderWindow window(VideoMode(800, 600),"Test Window");
-			window.clear(Color::Black);
-			world.VisualizeAllBounds(window);
-			Font fnt;
-			Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
-			Text text("Push space to continue...", fnt);
-			text.setPosition(0, 500);
-			window.draw(text);
-			window.display();
-			while (!Keyboard::isKeyPressed(Keyboard::Space));
+			RenderWindow window(VideoMode(800, 600), "Test Window");
+			system_clock::time_point last = system_clock::now();
+			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
+				window.clear(Color::Black);
+				system_clock::time_point current = system_clock::now();
+				unsigned int deltaMs =
+					std::chrono::duration_cast<std::chrono::milliseconds>(current - last).count();
+				world.UpdatePhysics(deltaMs);
+				last = current;
+				world.VisualizeAllBounds(window);
+				Font fnt;
+				Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
+				Text text("Push space to continue...", fnt);
+				text.setPosition(0, 500);
+				window.draw(text);
+				window.display();          
+			}
 		}
+			
 	};
 }

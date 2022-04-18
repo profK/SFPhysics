@@ -21,6 +21,7 @@ void sfp::World::RemovePhysicsObject(PhysicsObject& obj)
 void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 {
 	for (auto obj : objects) {
+		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
 		obj->update(deltaMilliseconds);
 	}
 }
