@@ -9,6 +9,7 @@
 #include "../SFPhysics/World.h"
 #include <ctime> 
 #include <chrono>
+#include "../SFPhysics/StaticPhysicsObject.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sfp;
@@ -78,6 +79,9 @@ namespace MSTests
 			);
 			world.AddPhysicsObject(
 				DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(30, 30))));
+			world.AddPhysicsObject(
+				StaticPhysicsObject(AABB(Vector2f(0, 550), Vector2f(800, 600)))
+			);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
