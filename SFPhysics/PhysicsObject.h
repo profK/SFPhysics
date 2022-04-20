@@ -27,6 +27,7 @@ namespace sfp {
 		float getRestitution();
 		virtual float getMass();
 		PhysicsObjectCollisionResult collideWith(PhysicsObject& other);
+		virtual void collisionCallback(PhysicsObjectCollisionResult& collision);
 
 	};
 }

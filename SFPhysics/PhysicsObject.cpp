@@ -61,4 +61,9 @@ PhysicsObjectCollisionResult sfp::PhysicsObject::collideWith(
 		this->bounds->collideWith(*other.bounds));
 }
 
+void sfp::PhysicsObject::collisionCallback(PhysicsObjectCollisionResult& collision)
+{
+	//nop as default is to do nothing but internal physics on collision
+}
+
 

@@ -72,6 +72,8 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 				PhysicsObjectCollisionResult collision =
 					obj->collideWith(*obj2);
 				if (collision.hasCollided) {
+					collision.object1.collisionCallback(collision);
+					collision.object2.collisionCallback(collision);
 					ResolveCollision(collision);
 				}
 			}
