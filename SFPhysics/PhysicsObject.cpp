@@ -5,23 +5,28 @@
 using namespace sfp;
 
 sfp::PhysicsObject::PhysicsObject(Bounds& bounds,float restitution, float mass):
-	bounds(bounds),restitution(restitution),mass(mass)
+	bounds(&bounds),restitution(restitution),mass(mass)
 {
 }
 
 void sfp::PhysicsObject::setPosition(Vector2f center)
 {
-	bounds.setPosition(center);
+	bounds->setPosition(center);
 }
 
 Vector2f sfp::PhysicsObject::getPosition()
 {
-	return bounds.getPosition();
+	return bounds->getPosition();
+}
+
+Bounds& sfp::PhysicsObject::getBounds()
+{
+	return *bounds;
 }
 
 void sfp::PhysicsObject::visualizeBounds(RenderWindow& window)
 {
-	bounds.visualize(window);
+	bounds->visualize(window);
 }
 
 float sfp::PhysicsObject::getRestitution()
@@ -38,6 +43,7 @@ PhysicsObjectCollisionResult sfp::PhysicsObject::collideWith(
 	PhysicsObject& other)
 {
 	return PhysicsObjectCollisionResult(*this,other,
-		this->bounds.collideWith(other.bounds));
+		this->bounds->collideWith(*other.bounds));
 }
+
 

@@ -81,6 +81,11 @@ void sfp::CircleBounds::setPosition(Vector2f center)
     position = center;
 }
 
+void sfp::CircleBounds::setRadius(float r)
+{
+    radius = r;
+}
+
 float sfp::CircleBounds::getRadius()
 {
     return radius;

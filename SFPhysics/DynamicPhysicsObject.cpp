@@ -14,9 +14,9 @@ sfp::DynamicPhysicsObject::DynamicPhysicsObject(Bounds& bounds,
 
 void sfp::DynamicPhysicsObject::update(unsigned int deltaMilliseconds)
 {
-	Vector2f pos = bounds.getPosition();
+	Vector2f pos = bounds->getPosition();
 	pos += (velocity * (float)deltaMilliseconds);
-	bounds.setPosition(pos);
+	bounds->setPosition(pos);
 }
 
 Vector2f sfp::DynamicPhysicsObject::getVelocity()
