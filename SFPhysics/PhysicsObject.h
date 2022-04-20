@@ -13,6 +13,7 @@ namespace sfp {
 		float restitution;
 		float mass;
 	public:
+		PhysicsObject();
 		PhysicsObject(Bounds& bounds,float restitution=1.0f,float mass=1.0f);
 		virtual void applyImpulse(Vector2f impulse)=0;
 		virtual void update(unsigned int deltaMillisconds)=0;

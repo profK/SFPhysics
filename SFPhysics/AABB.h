@@ -15,6 +15,7 @@ namespace sfp {
 		Vector2f min;
 		Vector2f max;
 	public:
+		AABB();
 		AABB(Vector2f min, Vector2f max);
 		bool intersectsWith(AABB other);
 		BoundsCollisionResult collideWithAABB(AABB &other);

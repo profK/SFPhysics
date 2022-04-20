@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "StaticPhysicsObject.h"
 
+sfp::StaticPhysicsObject::StaticPhysicsObject():
+	PhysicsObject()
+{
+}
+
 sfp::StaticPhysicsObject::StaticPhysicsObject(Bounds& bounds):
 	PhysicsObject(bounds)
 {

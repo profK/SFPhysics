@@ -6,6 +6,11 @@
 
 using namespace std;
 
+sfp::AABB::AABB():
+    AABB(Vector2f(0,0),Vector2f(1,1))
+{
+}
+
 sfp::AABB::AABB(Vector2f min, Vector2f max):
     min(min),max(max)
 {

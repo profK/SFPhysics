@@ -48,9 +48,9 @@ namespace MSTests
 			AABB b3(Vector2f(5, 0), Vector2f(15, 10));;
 			BoundsCollisionResult result2 = b1.collideWith(b3);
 			Assert::IsTrue(result2.hasCollided);
-			Assert::AreEqual(10.0f, result2.penetration, L"Penetration not eq 10");
-			Assert::AreEqual(0.0f, result2.normal.x, L"normal X not 1");
-			Assert::AreEqual(1.0f, result2.normal.y, L"normal Y not 0");
+			Assert::AreEqual(5.0f, result2.penetration, L"Penetration not eq 10");
+			Assert::AreEqual(0.0f, result2.normal.y, L"normal Y not 1");
+			Assert::AreEqual(1.0f, result2.normal.x, L"normal X not 0");
 		}
 
 		TEST_METHOD(BoxVCircle)

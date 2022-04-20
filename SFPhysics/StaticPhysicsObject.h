@@ -7,6 +7,7 @@ namespace sfp {
         public PhysicsObject
     {
     public:
+        StaticPhysicsObject();
         StaticPhysicsObject(Bounds& bounds);
         void applyImpulse(Vector2f impulse);
         Vector2f getVelocity();

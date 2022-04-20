@@ -5,6 +5,11 @@
 
 using namespace std;
 
+sfp::CircleBounds::CircleBounds() :
+    CircleBounds(Vector2f(0.5, 0.5), 1)
+{
+}
+
 sfp::CircleBounds::CircleBounds(Vector2f position, float radius):
     position(position), radius(radius)
 {
