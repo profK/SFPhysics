@@ -19,7 +19,7 @@ namespace sfp{
 		Bounds& getBounds();
 		PhysicsObject& getPhysicsObject();
 		virtual void update(unsigned int deltaMS);
-		virtual void setPosition(Vector2f position);
+		void setCenter(Vector2f position);
 	};
 }
 

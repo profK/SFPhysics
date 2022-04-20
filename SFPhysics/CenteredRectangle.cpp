@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CenteredRectangle.h"
 
+sfp::CenteredRectangle::CenteredRectangle(Vector2f size):
+    RectangleShape(size)
+{
+}
+
 void sfp::CenteredRectangle::setCenter(Vector2f center)
 {
     Vector2f size = getSize();

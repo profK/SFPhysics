@@ -24,5 +24,11 @@ sfp::PhysicsObject& sfp::PhysicsShape::getPhysicsObject()
 
 void sfp::PhysicsShape::update(unsigned int deltaMS)
 {
-	shape.setPosition(objectType.getPosition());
+	shape.setCenter(objectType.getPosition());
+}
+
+void sfp::PhysicsShape::setCenter(Vector2f position)
+{
+	shape.setCenter(position);
+	objectType.setPosition(position);
 }
