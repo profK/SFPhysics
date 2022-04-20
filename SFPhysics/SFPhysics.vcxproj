@@ -155,19 +155,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
+    <ClInclude Include="CenteredCircle.h" />
+    <ClInclude Include="CenteredRectangle.h" />
+    <ClInclude Include="CenteredShape.h" />
     <ClInclude Include="CircleBounds.h" />
     <ClInclude Include="BoundsCollisionResult.h" />
-    <ClInclude Include="DynamicPhysicsObject.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Bounds.h" />
+    <ClInclude Include="PhysicsCircleShape.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="PhysicsObjectCollisionResult.h" />
+    <ClInclude Include="PhysicsShape.h" />
     <ClInclude Include="StaticPhysicsObject.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="CenteredCircle.cpp" />
+    <ClCompile Include="CenteredRectangle.cpp" />
+    <ClCompile Include="CenteredShape.cpp" />
     <ClCompile Include="CircleBounds.cpp" />
     <ClCompile Include="BoundsCollisionResult.cpp" />
     <ClCompile Include="DynamicPhysicsObject.cpp" />
@@ -178,8 +185,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Bounds.cpp" />
+    <ClCompile Include="PhysicsCircleShape.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="PhysicsObjectCollisionResult.cpp" />
+    <ClCompile Include="PhysicsShape.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="StaticPhysicsObject.cpp" />
     <ClCompile Include="World.cpp" />
