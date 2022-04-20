@@ -9,7 +9,8 @@ namespace sfp {
         Vector2f velocity;
 
     public:
-        DynamicPhysicsObject(Bounds& bounds);
+        DynamicPhysicsObject(Bounds& bounds,float restitution=1.0,
+            float mass = 1.0);
         void applyImpulse(Vector2f impulse);
         void update(unsigned int deltaMilliseconds);
         Vector2f getVelocity();

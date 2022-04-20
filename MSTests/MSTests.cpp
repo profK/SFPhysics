@@ -72,13 +72,14 @@ namespace MSTests
 		TEST_METHOD(VisualTest)
 		{
 			World world(Vector2f(0, 1));
+			//world.AddPhysicsObject(
+			//	DynamicPhysicsObject(CircleBounds(Vector2f(100, 100), 50)));
 			world.AddPhysicsObject(
-				DynamicPhysicsObject(CircleBounds(Vector2f(100, 100), 50)));
-			world.AddPhysicsObject(
-				DynamicPhysicsObject(AABB(Vector2f(0, 0), Vector2f(10, 10)))
+				DynamicPhysicsObject(AABB(Vector2f(0, 0), Vector2f(40, 120)),
+					0.75f)
 			);
-			world.AddPhysicsObject(
-				DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(30, 30))));
+			//world.AddPhysicsObject(
+			//	DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(40, 40))));
 			world.AddPhysicsObject(
 				StaticPhysicsObject(AABB(Vector2f(0, 550), Vector2f(800, 600)))
 			);

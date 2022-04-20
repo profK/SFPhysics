@@ -2,8 +2,9 @@
 #include "AABB.h"
 #include <math.h>
 #include "CircleBounds.h"
+#include <iostream>
 
-
+using namespace std;
 
 sfp::AABB::AABB(Vector2f min, Vector2f max):
     min(min),max(max)
@@ -26,32 +27,32 @@ sfp::BoundsCollisionResult sfp::AABB::collideWithAABB(AABB &other)
 // Setup a couple pointers to each object
     AABB* A = this;
     AABB* B = &other;
-
+    
     // Vector from A to B
     Vector2f n = B->getPosition() - A->getPosition();
 
 // Calculate half extents along x axis for each object
-    float a_extent = (max.x - min.x) / 2;
-    float b_extent = (other.max.x - other.min.x) / 2;
+    float a_extent_x = (max.x - min.x) / 2;
+    float b_extent_x = (other.max.x - other.min.x) / 2;
 
 // Calculate overlap on x axis
-    float x_overlap = a_extent + b_extent - abs(n.x);
+    float x_overlap = a_extent_x + b_extent_x - abs(n.x);
 
 // SAT test on x axis
     if (x_overlap > 0)
     {
     // Calculate half extents along y axis for each object
-        float a_extent = (max.y - min.y) / 2;
-        float b_extent = (other.max.y - other.min.y) / 2;
+        float a_extent_y = (max.y - min.y) / 2;
+        float b_extent_y = (other.max.y - other.min.y) / 2;
 
         // Calculate overlap on y axis
-        float y_overlap = a_extent + b_extent - abs(n.y);
+        float y_overlap = a_extent_y + b_extent_y - abs(n.y);
 
         // SAT test on y axis
         if (y_overlap > 0)
         {
             // Find out which axis is axis of least penetration
-            if (x_overlap > y_overlap)
+            if (x_overlap < y_overlap)
             {
                 // Point towards B knowing that n points from A to B
                 Vector2f normal;
@@ -59,7 +60,7 @@ sfp::BoundsCollisionResult sfp::AABB::collideWithAABB(AABB &other)
                 if (n.x < 0)
                     normal = Vector2f(-1, 0);
                 else
-                    normal = Vector2f(0, 0);
+                    normal = Vector2f(1, 0);
                 return BoundsCollisionResult(*this, other, x_overlap, normal);
             }
             else
@@ -138,7 +139,7 @@ sfp::BoundsCollisionResult sfp::AABB::collideWithCircle(CircleBounds& other) {
 
     // Early out of the radius is shorter than distance to closest point and
     // Circle not inside the AABB
-    if (d > r * r && !inside)
+    if ((d > (r * r)) && !inside)
         return BoundsCollisionResult(*this, other);
 
     // Avoided sqrt until we needed
@@ -166,7 +167,7 @@ sfp::BoundsCollisionResult sfp::AABB::collideWithCircle(CircleBounds& other) {
 Vector2f sfp::AABB::getPosition()
 {
     
-    return min + (max - min) / 2.0f;
+    return min + ((max - min) / 2.0f);
     
 }
 
@@ -180,7 +181,8 @@ void sfp::AABB::setPosition(Vector2f center)
 
 void sfp::AABB::visualize(RenderWindow& window)
 {
-    RectangleShape shape(max - min);
+    RectangleShape shape(
+        Vector2f(max.x-min.x+1,max.y-min.y+1));
     shape.setPosition(min);
     shape.setFillColor(Color::Transparent);
     shape.setOutlineColor(Color::White);

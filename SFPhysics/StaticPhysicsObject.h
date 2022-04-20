@@ -1,5 +1,6 @@
 #pragma once
 #include "PhysicsObject.h"
+#include <limits>
 
 namespace sfp {
     class StaticPhysicsObject :
@@ -13,6 +14,7 @@ namespace sfp {
 
         // Inherited via PhysicsObject
         virtual void update(unsigned int deltaMillisconds) override;
+        virtual float getMass() override;
     };
 }
 

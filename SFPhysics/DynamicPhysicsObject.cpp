@@ -6,8 +6,9 @@ void sfp::DynamicPhysicsObject::applyImpulse(Vector2f impulse)
 	velocity += impulse;
 }
 
-sfp::DynamicPhysicsObject::DynamicPhysicsObject(Bounds& bounds) :
-	PhysicsObject(bounds)
+sfp::DynamicPhysicsObject::DynamicPhysicsObject(Bounds& bounds,
+	float restitution,float mass) :
+	PhysicsObject(bounds,restitution,mass)
 {
 }
 

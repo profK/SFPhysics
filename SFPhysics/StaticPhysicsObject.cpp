@@ -25,3 +25,8 @@ void sfp::StaticPhysicsObject::update(unsigned int deltaMillisconds)
 {
 	//nop
 }
+
+float sfp::StaticPhysicsObject::getMass()
+{
+	return std::numeric_limits<float>::max();
+}

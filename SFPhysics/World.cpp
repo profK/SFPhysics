@@ -28,6 +28,7 @@ namespace sfp {
 		float j = -(1 + e) * velAlongNormal;
 		j /= 1 / A.getMass() + 1 / B.getMass();
 
+		
 		// Apply impulse
 		Vector2f impulse = j * collision.normal;
 		float aMass = A.getMass();
@@ -62,16 +63,17 @@ void sfp::World::RemovePhysicsObject(PhysicsObject& obj)
 
 void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 {
-	for (auto iter1 = objects.begin(); iter1 != objects.end();iter1++ ) {
-		auto obj = *iter1;
+	for (auto obj : objects) {
 		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
 		// do collision, very stupid right now. long run should not check 
 		// objecst that havent moved
-		for (auto iter2 = next(iter1); iter2 != objects.end();iter2++) {
-			PhysicsObjectCollisionResult collision =
-				obj->collideWith(**iter2);
-			if (collision.hasCollided) {
-				ResolveCollision(collision);
+		for (auto obj2 : objects) {
+			if (obj != obj2) {
+				PhysicsObjectCollisionResult collision =
+					obj->collideWith(*obj2);
+				if (collision.hasCollided) {
+					ResolveCollision(collision);
+				}
 			}
 		}
 		obj->update(deltaMilliseconds);

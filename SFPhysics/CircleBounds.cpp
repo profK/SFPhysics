@@ -62,7 +62,7 @@ sfp::BoundsCollisionResult sfp::CircleBounds::collideWithCircle(CircleBounds& ot
 
 sfp::BoundsCollisionResult sfp::CircleBounds::collideWithAABB(AABB& other)
 {
-    BoundsCollisionResult result= other.collideWithCircle(*this);
+    BoundsCollisionResult result = other.collideWithCircle(*this);
     if (result.hasCollided) {
         //have to reverse bounds and normal
         return BoundsCollisionResult(result.object2, result.object1,
@@ -89,7 +89,7 @@ float sfp::CircleBounds::getRadius()
 void sfp::CircleBounds::visualize(RenderWindow& window)
 {
     CircleShape shape(radius);
-    shape.setPosition(position);
+    shape.setPosition(position-Vector2f(radius,radius));
     shape.setFillColor(Color::Transparent);
     shape.setOutlineColor(Color::White);
     shape.setOutlineThickness(2);
