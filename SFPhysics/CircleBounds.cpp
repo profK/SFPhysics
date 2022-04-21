@@ -22,6 +22,11 @@ bool sfp::CircleBounds::intersectsWith(CircleBounds &other)
 	return r < (powf(position.x + other.position.x,2) + powf(position.y + other.position.y, 2));
 }
 
+sfp::BoundsCollisionResult sfp::CircleBounds::collideWith(Bounds& other)
+{
+    return reverseCollsionObjects(other.collideWithCircle(*this));
+}
+
 sfp::BoundsCollisionResult sfp::CircleBounds::collideWithCircle(CircleBounds& other)
 {
     // Setup a couple pointers to each object

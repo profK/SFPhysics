@@ -7,12 +7,8 @@
 
 using namespace sfp;
 
-BoundsCollisionResult sfp::Bounds::collideWith(Bounds& other)
+BoundsCollisionResult sfp::Bounds::reverseCollsionObjects(BoundsCollisionResult result)
 {
-	if (typeid(other) == typeid(CircleBounds)) {
-		return collideWithCircle(static_cast<CircleBounds&>(other));
-	}
-	else if (typeid(other) == typeid(AABB)) {
-		return collideWithAABB(static_cast<AABB&>(other));
-	}
+	return BoundsCollisionResult(result.object2,result.object1,result.penetration,
+		result.normal*-1.0f);
 }

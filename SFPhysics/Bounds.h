@@ -14,12 +14,13 @@ namespace sfp {
 	private:
 
 	public:
+		BoundsCollisionResult reverseCollsionObjects(BoundsCollisionResult result);
 		virtual Vector2f getPosition() = 0;
 		virtual void setPosition(Vector2f center)=0;
 		virtual void visualize(RenderWindow& window)=0;
 		virtual BoundsCollisionResult collideWithAABB(AABB& other)=0;
 		virtual BoundsCollisionResult collideWithCircle(CircleBounds& other)=0;
-		BoundsCollisionResult collideWith(Bounds& other);
+		virtual BoundsCollisionResult collideWith(Bounds& other)=0;
 	};
 }
 

@@ -3,8 +3,7 @@
 using namespace sf;
 
 namespace sfp{
-    class CenteredShape :
-        public Shape
+    class CenteredShape 
     {
     public:
         virtual void setCenter(Vector2f center)=0;

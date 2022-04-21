@@ -165,6 +165,8 @@
     <ClInclude Include="Bounds.h" />
     <ClInclude Include="PhysicsBody.h" />
     <ClInclude Include="PhysicsBodyCollisionResult.h" />
+    <ClInclude Include="PhysicsCircle.h" />
+    <ClInclude Include="PhysicsRectangle.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +185,8 @@
     <ClCompile Include="Bounds.cpp" />
     <ClCompile Include="PhysicsBody.cpp" />
     <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
+    <ClCompile Include="PhysicsCircle.cpp" />
+    <ClCompile Include="PhysicsRectangle.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

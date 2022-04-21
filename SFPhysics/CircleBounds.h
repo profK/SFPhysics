@@ -19,6 +19,7 @@ namespace sfp {
 		CircleBounds();
 		CircleBounds(Vector2f position, float radius);
 		bool intersectsWith(CircleBounds& other);
+		BoundsCollisionResult collideWith(Bounds& other);
 		BoundsCollisionResult collideWithAABB(AABB& other);
 		BoundsCollisionResult collideWithCircle(CircleBounds &other);
 		Vector2f getPosition();

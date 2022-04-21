@@ -18,6 +18,7 @@ namespace sfp {
 		AABB();
 		AABB(Vector2f min, Vector2f max);
 		bool intersectsWith(AABB other);
+		BoundsCollisionResult collideWith(Bounds& other);
 		BoundsCollisionResult collideWithAABB(AABB &other);
 		BoundsCollisionResult collideWithCircle(CircleBounds& other);
 		Vector2f getPosition();

@@ -26,6 +26,11 @@ bool sfp::AABB::intersectsWith(AABB other)
     return true;
 }
 
+sfp::BoundsCollisionResult sfp::AABB::collideWith(Bounds& other)
+{
+    return reverseCollsionObjects(other.collideWithAABB(*this));
+}
+
 sfp::BoundsCollisionResult sfp::AABB::collideWithAABB(AABB &other)
 {
    
