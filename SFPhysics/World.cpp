@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "World.h"
-#include "PhysicsObjectCollisionResult.h"
+#include "PhysicsBodyCollisionResult.h"
 
 //internal utility functions
 namespace sfp {
 	static float Dot(Vector2f a, Vector2f b){
 		return (a.x * b.x) + (a.y * b.y);
 	}
-	static void ResolveCollision(PhysicsObjectCollisionResult &collision)
+	static void ResolveCollision(PhysicsBodyCollisionResult &collision)
 	{
-		PhysicsObject &A = collision.object1;
-		PhysicsObject &B = collision.object2;
+		PhysicsBody &A = collision.object1;
+		PhysicsBody &B = collision.object2;
 		// Calculate relative velocity
 		Vector2f rv = B.getVelocity() - A.getVelocity();
 
@@ -51,12 +51,14 @@ sfp::World::World(Vector2f gravity):
 
 }
 
-void sfp::World::AddPhysicsObject(PhysicsObject& obj)
+
+
+void sfp::World::AddPhysicsBody(PhysicsBody& obj)
 {
 	objects.push_back(&obj);
 }
 
-void sfp::World::RemovePhysicsObject(PhysicsObject& obj)
+void sfp::World::RemovePhysicsBody(PhysicsBody& obj)
 {
 	objects.remove(&obj);
 }
@@ -69,7 +71,7 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 		// objecst that havent moved
 		for (auto obj2 : objects) {
 			if (obj != obj2) {
-				PhysicsObjectCollisionResult collision =
+				PhysicsBodyCollisionResult collision =
 					obj->collideWith(*obj2);
 				if (collision.hasCollided) {
 					collision.object1.collisionCallback(collision);

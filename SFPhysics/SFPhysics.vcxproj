@@ -163,12 +163,8 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Bounds.h" />
-    <ClInclude Include="PhysicsCircleShape.h" />
-    <ClInclude Include="PhysicsObject.h" />
-    <ClInclude Include="PhysicsObjectCollisionResult.h" />
-    <ClInclude Include="PhysicsRectangleShape.h" />
-    <ClInclude Include="PhysicsShape.h" />
-    <ClInclude Include="StaticPhysicsObject.h" />
+    <ClInclude Include="PhysicsBody.h" />
+    <ClInclude Include="PhysicsBodyCollisionResult.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +174,6 @@
     <ClCompile Include="CenteredShape.cpp" />
     <ClCompile Include="CircleBounds.cpp" />
     <ClCompile Include="BoundsCollisionResult.cpp" />
-    <ClCompile Include="DynamicPhysicsObject.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -186,13 +181,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Bounds.cpp" />
-    <ClCompile Include="PhysicsCircleShape.cpp" />
-    <ClCompile Include="PhysicsObject.cpp" />
-    <ClCompile Include="PhysicsObjectCollisionResult.cpp" />
-    <ClCompile Include="PhysicsRectangleShape.cpp" />
-    <ClCompile Include="PhysicsShape.cpp" />
+    <ClCompile Include="PhysicsBody.cpp" />
+    <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
-    <ClCompile Include="StaticPhysicsObject.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>

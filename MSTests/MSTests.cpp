@@ -5,11 +5,11 @@
 #include "../SFPhysics/CircleBounds.h"
 #include "../SFPhysics/AABB.h"
 #include <SFML/Window.hpp>
-#include "../SFPhysics/DynamicPhysicsObject.h"
+#include "../SFPhysics/PhysicsBody.h"
 #include "../SFPhysics/World.h"
 #include <ctime> 
 #include <chrono>
-#include "../SFPhysics/StaticPhysicsObject.h"
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sfp;
@@ -72,16 +72,16 @@ namespace MSTests
 		TEST_METHOD(VisualTest)
 		{
 			World world(Vector2f(0, 1));
-			world.AddPhysicsObject(
-				DynamicPhysicsObject(CircleBounds(Vector2f(100, 100), 50)));
-			world.AddPhysicsObject(
-				DynamicPhysicsObject(AABB(Vector2f(0, 0), Vector2f(40, 120)),
+			world.AddPhysicsBody(
+				PhysicsBody(CircleBounds(Vector2f(100, 100), 50)));
+			world.AddPhysicsBody(
+				PhysicsBody(AABB(Vector2f(0, 0), Vector2f(40, 120)),false,
 					0.75f)
 			);
 			//world.AddPhysicsObject(
 			//	DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(40, 40))));
-			world.AddPhysicsObject(
-				StaticPhysicsObject(AABB(Vector2f(0, 550), Vector2f(800, 600)))
+			world.AddPhysicsBody(
+				PhysicsBody(AABB(Vector2f(0, 550), Vector2f(800, 600)),true)
 			);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
