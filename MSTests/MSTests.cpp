@@ -47,7 +47,7 @@ namespace MSTests
 			AABB b2(Vector2f(100, 100), Vector2f(110, 110));
 			BoundsCollisionResult result = b1.collideWith(b2);
 			Assert::IsFalse(result.hasCollided);
-			AABB b3(Vector2f(5, 0), Vector2f(15, 10));;
+			AABB b3(Vector2f(5, 0), Vector2f(15, 10));
 			BoundsCollisionResult result2 = b1.collideWith(b3);
 			Assert::IsTrue(result2.hasCollided);
 			Assert::AreEqual(5.0f, result2.penetration, L"Penetration not eq 10");

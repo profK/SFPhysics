@@ -23,7 +23,9 @@ namespace sfp {
 		virtual BoundsCollisionResult collideWithAABB(AABB& other)=0;
 		virtual BoundsCollisionResult collideWithCircle(CircleBounds& other)=0;
 		virtual BoundsCollisionResult collideWith(Bounds& other)=0;
-		function<void(Vector2f)> onMove;
+		function<void(Vector2f)> onMove=[](Vector2f pos){
+			//nop
+		};
 	};
 }
 
