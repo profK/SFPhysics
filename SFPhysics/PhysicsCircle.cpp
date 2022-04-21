@@ -2,7 +2,15 @@
 #include "PhysicsCircle.h"
 
 sfp::PhysicsCircle::PhysicsCircle(Vector2f center, float radius, bool isStatic):
-	CenteredCircle(radius),CircleBounds(center,radius),PhysicsBody(*this,isStatic)
+	defaultBounds(center,radius),
+	CenteredCircle(radius),PhysicsBody(defaultBounds,isStatic)
 {
 	setCenter(center);
+	getBounds().onMove = [this](Vector2f center) {
+		CenteredCircle::setCenter(center);
+	};
 }
+
+
+
+

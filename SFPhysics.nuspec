@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>SFPhysicse</id>
+    <version>0.1.0</version>
+    <authors>Jeff Kesselman</authors>
+    <owners>Jeff Kesselman</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple 2D physics library for SFML</description>
+    <releaseNotes>pre-releasery</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <title>Simple Physics for SFML</title>
+    <summary>A simple 2D physics library for SFML.
+    It only handles circle bounds and AABB and hs no support for resolving frame-misses</summary>
+    <tags>native, SFML, SFPhysics</tags>
+  </metadata>
+  <files>
+    <file src="..\SFPhysics\*.h" target="\lib\native\include" />
+  </files>
+</package>

@@ -7,7 +7,8 @@ sfp::CenteredCircle::CenteredCircle(float radius):CircleShape(radius)
 
 void sfp::CenteredCircle::setCenter(Vector2f center)
 {
-	CircleShape::setPosition(center);
+	float radius = getRadius();
+	CircleShape::setPosition(center-Vector2f(radius,radius));
 }
 
 Vector2f sfp::CenteredCircle::getCenter()

@@ -5,8 +5,10 @@
 
 namespace sfp {
     class PhysicsRectangle :
-        public CenteredRectangle,public AABB,public PhysicsBody
+        public CenteredRectangle,public PhysicsBody
     {
+    private:
+        AABB defaultBounds;
     public:
         PhysicsRectangle(Vector2f center, Vector2f size, bool isStatic = false);
     };

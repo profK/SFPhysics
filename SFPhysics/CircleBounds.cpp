@@ -88,6 +88,7 @@ Vector2f sfp::CircleBounds::getPosition()
 
 void sfp::CircleBounds::setPosition(Vector2f center)
 {
+    onMove(center);
     position = center;
 }
 

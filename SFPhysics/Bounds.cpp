@@ -12,3 +12,10 @@ BoundsCollisionResult sfp::Bounds::reverseCollsionObjects(BoundsCollisionResult 
 	return BoundsCollisionResult(result.object2,result.object1,result.penetration,
 		result.normal*-1.0f);
 }
+
+void sfp::Bounds::setPosition(Vector2f center)
+{
+	//nop
+}
+
+
