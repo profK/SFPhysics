@@ -12,3 +12,8 @@ sfp::PhysicsRectangle::PhysicsRectangle(Vector2f center, Vector2f size, bool isS
 		CenteredRectangle::setCenter(center);
 	};
 }
+
+void sfp::PhysicsRectangle::setCenter(Vector2f center) {
+	PhysicsBody::getBounds().setPosition(center);
+	CenteredRectangle::setCenter(center);
+}

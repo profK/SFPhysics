@@ -12,6 +12,7 @@ namespace sfp {
     public:  
       
         PhysicsRectangle(Vector2f center=Vector2f(25,25), Vector2f size=Vector2f(50,50), bool isStatic = false);
+        void setCenter(Vector2f center);
     };
 }
 
