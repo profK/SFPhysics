@@ -1,20 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package>
+<?xml version="1.0"?>
+<package >
   <metadata>
-    <id>SFPhysicse</id>
-    <version>0.1.0</version>
-    <authors>Jeff Kesselman</authors>
-    <owners>Jeff Kesselman</owners>
+    <id>SFPhysics</id>
+    <version>0.1</version>
+    <title>SFPhysics</title>
+    <authors>Jeffrey Kesselman</authors>
+    <owners>Jeffrey Kesselman</owners>
+    <description>
+      A simple 2D physics package for SFML.  It only supports circular and AABB bounds.
+      It makes no attempt to detect or handle inter-frame collision misses.  It is
+      however perfectly suitable for most classic 2D games.
+
+      It has a pointerless API that mimics the SFML API conventiones.
+    </description>
+    <releaseNotes></releaseNotes>
+    <summary>
+      Simple 2D Physics for SFML
+    </summary>
+    <language>en-US</language>
+    <!-- <projectUrl>TBA</projectUrl> -->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A simple 2D physics library for SFML</description>
-    <releaseNotes>pre-releasery</releaseNotes>
-    <copyright>Copyright 2022</copyright>
-    <title>Simple Physics for SFML</title>
-    <summary>A simple 2D physics library for SFML.
-    It only handles circle bounds and AABB and hs no support for resolving frame-misses</summary>
-    <tags>native, SFML, SFPhysics</tags>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <copyright>Jeffrey Kesselman 2022</copyright>
+    <dependencies>
+    </dependencies>
+    <references></references>
+    <tags>native</tags> <!-- This is important ! -->
   </metadata>
   <files>
-    <file src="..\SFPhysics\*.h" target="lib\native\include" />
+      <!-- Note that now, binaries are placed conventionally under a directory named build -->
+      <file src="..\Release\**" target="build\native\Win32\bin" />
+      <file src="..\SFPhysics\*.h" target="build\native\Win32\include" />
+      <file src="..\x64\Release\**" target="build\native\x64\bin" />
+      <file src="..\SFPhysics\*.h" target="build\native\x64\include" />
+      <file src="SFPhysics.props" target="build" />
+      <file src="SFPhysics.targets" target="build" />
   </files>
 </package>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" 
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemDefinitionGroup 
+        Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+         <Link>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <!-- Put your lib name here -->
+            <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+     <ItemDefinitionGroup 
+        Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+         <Link>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <!-- Put your lib name here -->
+            <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+    <ItemDefinitionGroup 
+        Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\x64\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+         <Link>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <!-- Put your lib name here -->
+            <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>
