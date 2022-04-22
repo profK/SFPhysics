@@ -2,15 +2,10 @@
 #include "CppUnitTest.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../SFPhysics/CircleBounds.h"
-#include "../SFPhysics/AABB.h"
 #include <SFML/Window.hpp>
-#include "../SFPhysics/PhysicsBody.h"
-#include "../SFPhysics/World.h"
+#include "../SFPhysics/include/SFPhysics.h"
 #include <ctime> 
 #include <chrono>
-#include "../SFPhysics/PhysicsCircle.h"
-#include "../SFPhysics/PhysicsRectangle.h"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

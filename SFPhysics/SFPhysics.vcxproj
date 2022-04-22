@@ -91,6 +91,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)/include;$(ProjectDir)/include/SFPhysics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -127,6 +128,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(ProjectDir)/include;$(ProjectDir)/include/SFPhysics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -154,20 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AABB.h" />
-    <ClInclude Include="CenteredCircle.h" />
-    <ClInclude Include="CenteredRectangle.h" />
-    <ClInclude Include="CenteredShape.h" />
-    <ClInclude Include="CircleBounds.h" />
-    <ClInclude Include="BoundsCollisionResult.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Bounds.h" />
-    <ClInclude Include="PhysicsBody.h" />
-    <ClInclude Include="PhysicsBodyCollisionResult.h" />
-    <ClInclude Include="PhysicsCircle.h" />
-    <ClInclude Include="PhysicsRectangle.h" />
-    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
