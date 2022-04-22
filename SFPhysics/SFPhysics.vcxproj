@@ -109,6 +109,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include/SFPhysics;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -146,6 +147,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include/SFPhysics;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -157,6 +159,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="include\SFPhysics.h" />
+    <ClInclude Include="include\SFPhysics\AABB.h" />
+    <ClInclude Include="include\SFPhysics\Bounds.h" />
+    <ClInclude Include="include\SFPhysics\BoundsCollisionResult.h" />
+    <ClInclude Include="include\SFPhysics\CenteredCircle.h" />
+    <ClInclude Include="include\SFPhysics\CenteredRectangle.h" />
+    <ClInclude Include="include\SFPhysics\CenteredShape.h" />
+    <ClInclude Include="include\SFPhysics\CircleBounds.h" />
+    <ClInclude Include="include\SFPhysics\framework.h" />
+    <ClInclude Include="include\SFPhysics\pch.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsBody.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsBodyCollisionResult.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
+    <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

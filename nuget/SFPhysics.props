@@ -7,9 +7,9 @@
             <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
-            <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
     </ItemDefinitionGroup>
      <ItemDefinitionGroup 
@@ -18,9 +18,9 @@
             <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
-            <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
     </ItemDefinitionGroup>
     <ItemDefinitionGroup 
@@ -29,9 +29,9 @@
             <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\x64\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
-            <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
     </ItemDefinitionGroup>
 </Project>

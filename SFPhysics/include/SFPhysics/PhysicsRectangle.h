@@ -9,8 +9,9 @@ namespace sfp {
     {
     private:
         AABB defaultBounds;
-    public:
-        PhysicsRectangle(Vector2f center, Vector2f size, bool isStatic = false);
+    public:  
+      
+        PhysicsRectangle(Vector2f center=Vector2f(25,25), Vector2f size=Vector2f(50,50), bool isStatic = false);
     };
 }
 

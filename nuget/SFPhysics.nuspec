@@ -2,11 +2,12 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>0.1</version>
+    <version>0.1.3</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
     <description>
+      NOTE: Stil in development and rapidly evolving
       A simple 2D physics package for SFML.  It only supports circular and AABB bounds.
       It makes no attempt to detect or handle inter-frame collision misses.  It is
       however perfectly suitable for most classic 2D games.
@@ -30,9 +31,9 @@
   <files>
       <!-- Note that now, binaries are placed conventionally under a directory named build -->
       <file src="..\Release\**" target="build\native\Win32\bin" />
-      <file src="..\SFPhysics\*.h" target="build\native\Win32\include" />
+      <file src="..\SFPhysics\include\**" target="build\native\Win32\include" />
       <file src="..\x64\Release\**" target="build\native\x64\bin" />
-      <file src="..\SFPhysics\*.h" target="build\native\x64\include" />
+      <file src="..\SFPhysics\include\**" target="build\native\x64\include" />
       <file src="SFPhysics.props" target="build" />
       <file src="SFPhysics.targets" target="build" />
   </files>

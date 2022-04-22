@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PhysicsRectangle.h"
 
+
 sfp::PhysicsRectangle::PhysicsRectangle(Vector2f center, Vector2f size, bool isStatic):
 	defaultBounds(center - (size / 2.0f), center + (size / 2.0f)),
 	CenteredRectangle(size),

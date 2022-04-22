@@ -12,7 +12,7 @@ namespace sfp {
     private:
         CircleBounds defaultBounds;
     public:
-        PhysicsCircle(Vector2f position, float radius, bool isStatic = false);
+        PhysicsCircle(Vector2f position=Vector2f(25,25), float radius=50, bool isStatic = false);
     };
 }
 
