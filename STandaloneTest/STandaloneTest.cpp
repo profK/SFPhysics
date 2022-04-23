@@ -29,8 +29,14 @@ int main()
 		system_clock::time_point current = system_clock::now();
 		unsigned int deltaMs =
 			std::chrono::duration_cast<std::chrono::milliseconds>(current - last).count();
-		world.UpdatePhysics(deltaMs);
+		
+		if (deltaMs == 0) {
+			//skip update
+			continue;
+		}
 		last = current;
+		world.UpdatePhysics(deltaMs);
+		
 		//world.VisualizeAllBounds(window);
 		//Font fnt;
 		//Assert::IsTrue(fnt.loadFromFile("arial.ttf"));

@@ -10,6 +10,7 @@ namespace sfp {
         CenteredCircle(float radius);
         virtual void setCenter(Vector2f center) override;
         virtual Vector2f getCenter() override;
+       
     };
 }
 

@@ -191,13 +191,23 @@ void sfp::AABB::setPosition(Vector2f center)
     if(onMove) onMove(center);
 }
 
+void sfp::AABB::setSize(Vector2f extents)
+{
+    max = min + extents;
+}
+
+Vector2f sfp::AABB::getSize()
+{
+    return max - min;
+}
+
 void sfp::AABB::visualize(RenderWindow& window)
 {
-    RectangleShape shape(
-        Vector2f(max.x-min.x+1,max.y-min.y+1));
-    shape.setPosition(min);
-    shape.setFillColor(Color::Transparent);
-    shape.setOutlineColor(Color::White);
-    shape.setOutlineThickness(2);
-    window.draw(shape);
+    visual.setSize(
+        Vector2f(max.x-min.x+1,max.y-min.y+1)); // so it doesnt reallocate
+    visual.setPosition(min);
+    visual.setFillColor(Color::Transparent);
+    visual.setOutlineColor(Color::White);
+    visual.setOutlineThickness(2);
+    window.draw(visual);
 }

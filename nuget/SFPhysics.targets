@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <ItemGroup
-        Condition="'$(Platform)'=='Win32'" Label="Configuration">
-        <SFMLDLLS Include="$(MSBuildThisFileDirectory)native\Win32\bin\*.dll" />
-    </ItemGroup>
-    <ItemGroup
-        Condition="'$(Platform)'=='x64'" Label="Configuration">
-        <SFMLDLLS Include="$(MSBuildThisFileDirectory)native\x64\bin\*.dll" />
-    </ItemGroup>
-    <Target Name="SFPhysicsDLLTarget" AfterTargets="Build">
-        <Copy SourceFiles="@(SFPhysicsDLLS)" DestinationFolder="$(OutDir)" />
-    </Target>
+    
 </Project>

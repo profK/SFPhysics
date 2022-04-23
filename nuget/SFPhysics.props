@@ -4,10 +4,10 @@
     <ItemDefinitionGroup 
         Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
         <ClCompile>
-            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\Release\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
             <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
@@ -15,10 +15,10 @@
      <ItemDefinitionGroup 
         Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
         <ClCompile>
-            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\Win32\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\Win32\Debug\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
             <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
@@ -26,10 +26,21 @@
     <ItemDefinitionGroup 
         Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
         <ClCompile>
-            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\x64\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
          <Link>
-            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\Release\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <!-- Put your lib name here -->
+            <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
+    </ItemDefinitionGroup>
+    <ItemDefinitionGroup 
+        Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)native\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+         <Link>
+            <AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)native\x64\debug\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <!-- Put your lib name here -->
             <AdditionalDependencies>SFPhysics.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>

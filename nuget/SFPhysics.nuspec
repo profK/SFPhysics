@@ -2,17 +2,22 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>0.1.5</version>
+    <version>0.1.14</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
     <description>
-      NOTE: Stil in development and rapidly evolving
+      NOTE: Still in development and rapidly evolving
+      THis version appears to work pretty well.
+     
       A simple 2D physics package for SFML.  It only supports circular and AABB bounds.
       It makes no attempt to detect or handle inter-frame collision misses.  It is
       however perfectly suitable for most classic 2D games.
 
-      It has a pointerless API that mimics the SFML API conventiones.
+      It has a pointerless API that mimics the SFML API conventions.
+
+      Known Bug:  If you reset size after you set center on an AABB it will position wrong.
+      This bug carries up to PhysicsRectangle
     </description>
     <releaseNotes></releaseNotes>
     <summary>
@@ -30,10 +35,11 @@
   </metadata>
   <files>
       <!-- Note that now, binaries are placed conventionally under a directory named build -->
-      <file src="..\Release\**" target="build\native\Win32\bin" />
-      <file src="..\SFPhysics\include\**" target="build\native\Win32\include" />
-      <file src="..\x64\Release\**" target="build\native\x64\bin" />
-      <file src="..\SFPhysics\include\**" target="build\native\x64\include" />
+      <file src="..\SFPhysics\include\**" target="build\native\include" />
+      <file src="..\Release\SFPhysics.*" target="build\native\Win32\Release\bin" />
+      <file src="..\x64\Release\SFPhysics.*" target="build\native\x64\Release\bin" />
+      <file src="..\Debug\SFPhysics.*" target="build\native\Win32\Debug\bin" />
+      <file src="..\x64\Debug\SFPhysics.*" target="build\native\x64\Debug\bin" />
       <file src="SFPhysics.props" target="build" />
       <file src="SFPhysics.targets" target="build" />
   </files>

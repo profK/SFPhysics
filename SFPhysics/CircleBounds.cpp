@@ -105,12 +105,22 @@ float sfp::CircleBounds::getRadius()
     return radius;
 }
 
+void sfp::CircleBounds::setSize(Vector2f extents)
+{
+    setRadius(min(extents.x, extents.y));
+}
+
+Vector2f sfp::CircleBounds::getSize()
+{
+    return Vector2f(radius,radius);
+}
+
 void sfp::CircleBounds::visualize(RenderWindow& window)
 {
-    CircleShape shape(radius);
-    shape.setPosition(position-Vector2f(radius,radius));
-    shape.setFillColor(Color::Transparent);
-    shape.setOutlineColor(Color::White);
-    shape.setOutlineThickness(2);
-    window.draw(shape);
+    visual.setRadius(radius);
+    visual.setPosition(position-Vector2f(radius,radius));
+    visual.setFillColor(Color::Transparent);
+    visual.setOutlineColor(Color::White);
+    visual.setOutlineThickness(2);
+    window.draw(visual);
 }

@@ -66,6 +66,11 @@ float sfp::PhysicsBody::getRestitution()
 	return restitution;
 }
 
+void sfp::PhysicsBody::setRestitution(float r)
+{
+	restitution = r;
+}
+
 float sfp::PhysicsBody::getMass()
 {
 	if (!isStatic) {
@@ -77,11 +82,27 @@ float sfp::PhysicsBody::getMass()
 	
 }
 
+void sfp::PhysicsBody::setMass(float m)
+{
+	mass = m;
+}
+
+bool sfp::PhysicsBody::getStatic()
+{
+	return isStatic;
+}
+
+void sfp::PhysicsBody::setStatic(bool s)
+{
+	isStatic = s;
+}
+
 void sfp::PhysicsBody::update(unsigned int deltaMilliseconds)
 {
 	if (!isStatic) {
 		Vector2f pos = bounds->getPosition();
 		pos += (velocity * (float)deltaMilliseconds);
+		//pos += velocity * 10.0f;
 		bounds->setPosition(pos);
 	}
 }

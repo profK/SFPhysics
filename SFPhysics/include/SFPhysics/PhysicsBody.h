@@ -29,7 +29,11 @@ namespace sfp {
 		Vector2f getVelocity();
 		virtual void setVelocity(Vector2f v);
 		float getRestitution();
+		void setRestitution(float r);
 		virtual float getMass();
+		virtual void setMass(float m);
+		bool getStatic();
+		void setStatic(bool s);
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
 		virtual void collisionCallback(PhysicsBodyCollisionResult& collision);
 	};
