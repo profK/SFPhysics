@@ -11,7 +11,7 @@ sfp::CircleBounds::CircleBounds() :
 }
 
 sfp::CircleBounds::CircleBounds(Vector2f position, float radius):
-    position(position), radius(radius)
+    position(position), radius(radius), visual(10.0f)
 {
 }
 

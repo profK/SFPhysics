@@ -193,7 +193,9 @@ void sfp::AABB::setPosition(Vector2f center)
 
 void sfp::AABB::setSize(Vector2f extents)
 {
-    max = min + extents;
+    Vector2f center = (max + min) / 2.0f;
+    min = center- (extents/2.0f);
+    max = center + (extents / 2.0f);
 }
 
 Vector2f sfp::AABB::getSize()

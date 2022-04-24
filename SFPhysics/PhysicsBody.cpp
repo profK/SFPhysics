@@ -117,8 +117,12 @@ void sfp::PhysicsBody::applyImpulse(Vector2f impulse)
 PhysicsBodyCollisionResult sfp::PhysicsBody::collideWith(
 	PhysicsBody& other)
 {
-	return PhysicsBodyCollisionResult(*this,other,
+	PhysicsBodyCollisionResult collision(*this,other,
 		this->bounds->collideWith(*other.bounds));
+	if (collision.hasCollided) {
+		collisionCallback(collision);
+	}
+	return collision;
 }
 
 void sfp::PhysicsBody::collisionCallback(PhysicsBodyCollisionResult& collision)

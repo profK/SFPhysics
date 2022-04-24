@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>0.1.14</version>
+    <version>0.1.16</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -16,8 +16,7 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      Known Bug:  If you reset size after you set center on an AABB it will position wrong.
-      This bug carries up to PhysicsRectangle
+      
     </description>
     <releaseNotes></releaseNotes>
     <summary>
