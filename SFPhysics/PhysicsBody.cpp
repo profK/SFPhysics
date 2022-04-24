@@ -105,6 +105,7 @@ void sfp::PhysicsBody::update(unsigned int deltaMilliseconds)
 		//pos += velocity * 10.0f;
 		bounds->setPosition(pos);
 	}
+	updateCallback(deltaMilliseconds);
 }
 
 void sfp::PhysicsBody::applyImpulse(Vector2f impulse)
@@ -128,6 +129,11 @@ PhysicsBodyCollisionResult sfp::PhysicsBody::collideWith(
 void sfp::PhysicsBody::collisionCallback(PhysicsBodyCollisionResult& collision)
 {
 	//nop as default is to do nothing but internal physics on collision
+}
+
+void sfp::PhysicsBody::updateCallback(unsigned int deltaMS)
+{
+	//nop
 }
 
 

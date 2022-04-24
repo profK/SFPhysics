@@ -36,6 +36,7 @@ namespace sfp {
 		void setStatic(bool s);
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
 		virtual void collisionCallback(PhysicsBodyCollisionResult& collision);
+		virtual void updateCallback(unsigned int deltaMS);
 	};
 }
 
