@@ -15,6 +15,7 @@ sfp::PhysicsRectangle::PhysicsRectangle(Vector2f center, Vector2f size, bool isS
 
 void sfp::PhysicsRectangle::setCenter(Vector2f center) {
 	bounds->setPosition(center);
+	CenteredRectangle::setCenter(center);
 }
 
 void sfp::PhysicsRectangle::setSize(Vector2f size)

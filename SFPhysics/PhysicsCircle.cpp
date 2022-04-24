@@ -14,6 +14,7 @@ sfp::PhysicsCircle::PhysicsCircle(Vector2f center, float radius, bool isStatic):
 void sfp::PhysicsCircle::setCenter(Vector2f center)
 {
 	getBounds().setPosition(center);
+	CenteredCircle::setCenter(center);
 }
 
 void sfp::PhysicsCircle::setRadius(float radius)
