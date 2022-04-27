@@ -166,6 +166,7 @@
     <ClInclude Include="include\SFPhysics\CenteredCircle.h" />
     <ClInclude Include="include\SFPhysics\CenteredRectangle.h" />
     <ClInclude Include="include\SFPhysics\CenteredShape.h" />
+    <ClInclude Include="include\SFPhysics\CenteredSprite.h" />
     <ClInclude Include="include\SFPhysics\CircleBounds.h" />
     <ClInclude Include="include\SFPhysics\framework.h" />
     <ClInclude Include="include\SFPhysics\pch.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="include\SFPhysics\PhysicsBodyCollisionResult.h" />
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -181,6 +183,7 @@
     <ClCompile Include="CenteredCircle.cpp" />
     <ClCompile Include="CenteredRectangle.cpp" />
     <ClCompile Include="CenteredShape.cpp" />
+    <ClCompile Include="CenteredSprite.cpp" />
     <ClCompile Include="CircleBounds.cpp" />
     <ClCompile Include="BoundsCollisionResult.cpp" />
     <ClCompile Include="pch.cpp">
@@ -194,6 +197,7 @@
     <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
     <ClCompile Include="PhysicsCircle.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
+    <ClCompile Include="PhysicsSprite.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

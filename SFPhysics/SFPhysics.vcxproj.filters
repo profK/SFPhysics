@@ -66,6 +66,12 @@
     <ClInclude Include="include\SFPhysics\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SFPhysics\CenteredSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFPhysics.cpp">
@@ -108,6 +114,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsRectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CenteredSprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,3 +11,5 @@
 #include "SFPhysics/PhysicsCircle.h"
 #include "SFPhysics/PhysicsRectangle.h"
 #include "SFPhysics/World.h"
+#include "SFPhysics/CenteredSprite.h"
+#include "SFPhysics/PhysicsSprite.h"

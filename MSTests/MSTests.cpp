@@ -112,6 +112,12 @@ namespace MSTests
 			//	DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(40, 40))));
 			PhysicsRectangle floor(Vector2f(400, 575), Vector2f(800, 50), true);
 			world.AddPhysicsBody(floor);
+			Texture landerTex;
+			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
+			PhysicsSprite lander;
+			lander.setImage(landerTex);
+			lander.setCenter(Vector2f(600, 20));
+			world.AddPhysicsBody(lander);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
@@ -119,17 +125,22 @@ namespace MSTests
 				system_clock::time_point current = system_clock::now();
 				unsigned int deltaMs =
 					std::chrono::duration_cast<std::chrono::milliseconds>(current - last).count();
+				if (deltaMs == 0) {
+					continue;
+				}
 				world.UpdatePhysics(deltaMs);
 				last = current;
 				world.VisualizeAllBounds(window);
 				Font fnt;
-				Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
+				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				Text text("Push space to continue...", fnt);
 				text.setPosition(0, 500);
+				/*
 				window.draw(circle);
 				window.draw(fallingRect);
 				window.draw(floor);
 				window.draw(text);
+				window.draw(lander);*/
 				window.display();
 			}
 		}
