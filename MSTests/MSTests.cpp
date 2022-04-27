@@ -135,12 +135,11 @@ namespace MSTests
 				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				Text text("Push space to continue...", fnt);
 				text.setPosition(0, 500);
-				/*
 				window.draw(circle);
 				window.draw(fallingRect);
 				window.draw(floor);
 				window.draw(text);
-				window.draw(lander);*/
+				window.draw(lander);
 				window.display();
 			}
 		}

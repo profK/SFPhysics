@@ -24,7 +24,8 @@ sfp::PhysicsSprite::PhysicsSprite(Texture& tex, bool isStatic):
 void sfp::PhysicsSprite::setImage(Texture& img)
 {
 	CenteredSprite::setImage(img);
-
+	Vector2u sz = img.getSize();
+	getBounds().setSize(Vector2f(sz));
 }
 
 void sfp::PhysicsSprite::setCenter(Vector2f center)
