@@ -9,23 +9,24 @@ Its features and limitations are as follows:
 https://www.nuget.org/packages/SFPhysics/
 
 ## FEATURES
-Fast collision detection and response
-No internal memory allocation other then that done by library classes (e.g. list<T>)
-Pointerless API
-Hooks for responding to collisions and movement
+* Fast collision detection and response.
+* No internal memory allocation other then that done by library classes (e.g. list<T>)
+* Pointerless API
+* Hooks for responding to collisions and movement
+* Collision bounds virtualization (very useful for application debugging)
 
 ## LIMITATIONS
-Only supports Circular bounds and Axis-Aligned Bounding Boxes
-Only support simple hard bodies (no joints)
-Euler integrator can miss inter-frame collisions
-Currently only has prebuilt Physics SFML extensions for CircleShape, RectangleShape and Sprite
-Currently undocumented
+* Only supports Circular bounds and Axis-Aligned Bounding Boxes
+* Only support simple hard bodies (no joints)
+* Euler integrator can miss inter-frame collisions
+* Currently only has prebuilt Physics SFML extensions for CircleShape, RectangleShape and Sprite
+* Currently undocumented
 
 ## EXAMPLES
 https://github.com/profK/Breakout2  
 
 ## PLANNED EXTENSIONS
-Physics SFML extensions for the rest of the SFML drawing types
-Location-bin based collision acceleration
-"Sleeping" based collision acceleration
-Documentation
+* Physics SFML extensions for the rest of the SFML drawing types
+* Location-bin based collision acceleration
+* "Sleeping" based collision acceleration
+* Documentation
