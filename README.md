@@ -3,7 +3,10 @@
 This is a basic 2D collision library for SFML.  Its is quite fast (although some future further optimizations are intended).  
 It presents an API similar to SFML's API in that it is totally pointerless.  Simple games can be written with just stack allocation.
 
-Its features and limitaions are as follows:
+Its features and limitations are as follows:
+
+## NUGET PACKAGE
+https://www.nuget.org/packages/SFPhysics/
 
 ## FEATURES
 Fast collision detection and response
