@@ -13,7 +13,7 @@ https://www.nuget.org/packages/SFPhysics/
 * No internal memory allocation other then that done by library classes (e.g. list<T>)
 * Pointerless API
 * Hooks for responding to collisions and movement
-* Collision bounds virtualization (very useful for application debugging)
+* Collision bounds visualization (very useful for application debugging)
 
 ## LIMITATIONS
 * Only supports Circular bounds and Axis-Aligned Bounding Boxes
