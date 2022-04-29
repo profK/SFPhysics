@@ -18,6 +18,9 @@ Euler integrator can miss inter-frame collisions
 Currently only has prebuilt Physics SFML extensions for CircleShape, RectangleShape and Sprite
 Currently undocumented
 
+## EXAMPLES
+https://github.com/profK/Breakout2  
+
 ## PLANNED EXTENSIONS
 Physics SFML extensions for the rest of the SFML drawing types
 Location-bin based collision acceleration
