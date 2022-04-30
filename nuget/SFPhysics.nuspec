@@ -2,13 +2,14 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>0.1.22</version>
+    <version>0.2.0</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
     <description>
       NOTE: Still in development and rapidly evolving
-      THis version appears to work pretty well.
+      This version adds previous bug fixes and a new feature 
+      in the form of the PhysicsSprite.
      
       A simple 2D physics package for SFML.  It only supports circular and AABB bounds.
       It makes no attempt to detect or handle inter-frame collision misses.  It is

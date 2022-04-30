@@ -39,3 +39,19 @@ Vector2f CenteredSprite::getCenter()
     Vector2f pos = getPosition();
     return Vector2f(pos + (szvect / 2.0f));
 }
+
+void sfp::CenteredSprite::setSize(Vector2f size)
+{
+    IntRect imageSize = getTextureRect();
+    Vector2f scale = 
+        Vector2f(size.x/imageSize.width,size.y/imageSize.height);
+    Sprite::setScale(scale);
+}
+
+Vector2f sfp::CenteredSprite::getSize()
+{
+    IntRect imageSize = getTextureRect();
+    Vector2f scale = getScale();
+    return Vector2f(imageSize.width*scale.x,
+        imageSize.height*scale.y);
+}

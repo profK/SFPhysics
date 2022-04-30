@@ -13,3 +13,4 @@
 #include "SFPhysics/World.h"
 #include "SFPhysics/CenteredSprite.h"
 #include "SFPhysics/PhysicsSprite.h"
+#include "SFPhysics/PhysicsShape.h"

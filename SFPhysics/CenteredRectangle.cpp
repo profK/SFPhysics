@@ -17,3 +17,13 @@ Vector2f sfp::CenteredRectangle::getCenter()
     Vector2f size = getSize();
     return RectangleShape::getPosition() + (size / 2.0f);
 }
+
+void sfp::CenteredRectangle::setSize(Vector2f size)
+{
+    RectangleShape::setSize(size);
+}
+
+Vector2f sfp::CenteredRectangle::getSize()
+{
+    return RectangleShape::getSize();
+}

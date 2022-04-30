@@ -13,6 +13,8 @@ namespace sfp {
         // Inherited via CenterPositionedShape
         virtual void setCenter(Vector2f center) override;
         virtual Vector2f getCenter() override;
+        virtual void setSize(Vector2f size) override;
+        virtual Vector2f getSize() override;
     };
 }
 

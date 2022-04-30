@@ -148,6 +148,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include/SFPhysics;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -177,6 +179,7 @@
     <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PhysicsShape.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
@@ -197,6 +200,7 @@
     <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
     <ClCompile Include="PhysicsCircle.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
+    <ClCompile Include="PhysicsShape.cpp" />
     <ClCompile Include="PhysicsSprite.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />

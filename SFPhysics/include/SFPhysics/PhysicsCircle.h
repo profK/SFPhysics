@@ -1,21 +1,15 @@
-
-#include "CircleBounds.h"
-#include "PhysicsBody.h"
 #include "CenteredCircle.h"
+#include "CircleBounds.h"
+#include "PhysicsShape.h"
+
 
 using namespace sf;
 
 namespace sfp {
-    class PhysicsCircle :
-        public CenteredCircle, public PhysicsBody
+    class PhysicsCircle : public PhysicsShape<CenteredCircle, CircleBounds>
     {
-    private:
-        CircleBounds defaultBounds;
     public:
-        PhysicsCircle(Vector2f position=Vector2f(25,25), float radius=50, bool isStatic = false);
-        void setCenter(Vector2f center);
-        void setRadius(float radius);
-        void setPosition(Vector2f position);
+        PhysicsCircle();
     };
 }
 
