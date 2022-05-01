@@ -26,7 +26,9 @@ Vector2f sfp::CenteredRectangle::getCenter()
 
 void sfp::CenteredRectangle::setSize(Vector2f size)
 {
+    Vector2f center = getCenter();
     RectangleShape::setSize(size);
+    setCenter(center);
 }
 
 Vector2f sfp::CenteredRectangle::getSize()

@@ -18,8 +18,10 @@ Vector2f sfp::CenteredCircle::getCenter()
 
 void sfp::CenteredCircle::setSize(Vector2f sz)
 {
+	Vector2f center = getCenter();
 	float radius = std::min(sz.x, sz.y);
 	setRadius(radius);
+	setCenter(center);
 }
 
 Vector2f sfp::CenteredCircle::getSize()

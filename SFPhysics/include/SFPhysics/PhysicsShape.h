@@ -34,6 +34,7 @@ namespace sfp {
 		//	"type parameter of this class must derive from CenteredShape");
 		//static_assert(std::is_base_of<BoundsClass, Bounds>::value,
 		//	"type parameter of this class must derive from Bounds");
+
 		bounds.onMove = [this](Vector2f pos) {
 			this->getShape().setCenter(pos);
 		};

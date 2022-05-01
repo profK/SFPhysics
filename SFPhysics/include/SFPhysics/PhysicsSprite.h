@@ -7,7 +7,8 @@ namespace sfp {
     class PhysicsSprite :
         public PhysicsShape<CenteredSprite,AABB>
     {
-   
+    public:
+        void setTexture(Texture& img);
     };
 }
 

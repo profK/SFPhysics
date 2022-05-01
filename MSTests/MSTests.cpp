@@ -116,8 +116,6 @@ namespace MSTests
 			fallingRect.setCenter(Vector2f(20, 60));
 			fallingRect.setSize(Vector2f(40, 120));
 			world.AddPhysicsBody(fallingRect.getBody());
-			//world.AddPhysicsObject(
-			//	DynamicPhysicsObject(AABB(Vector2f(20, 20), Vector2f(40, 40))));
 			PhysicsRectangle floor;
 			floor.setCenter(Vector2f(400, 575));
 			floor.setSize(Vector2f(800, 50));
@@ -126,7 +124,7 @@ namespace MSTests
 			Texture landerTex;
 			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
-			//lander.setT;
+			lander.setTexture(landerTex);
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
 			RenderWindow window(VideoMode(800, 600), "Test Window");
