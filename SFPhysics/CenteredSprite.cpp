@@ -55,3 +55,5 @@ Vector2f sfp::CenteredSprite::getSize()
     return Vector2f(imageSize.width*scale.x,
         imageSize.height*scale.y);
 }
+
+

@@ -18,6 +18,8 @@ namespace sfp {
         virtual Vector2f getCenter() override;
         virtual void setSize(Vector2f size) override;
         virtual Vector2f getSize() override;
+
+        
     };
 }
 

@@ -4,7 +4,7 @@
 #include "PhysicsShape.h"
 
 namespace sfp {
-    class PhysicsRectangle : public PhysicsShape<CenteredRectangle, AABB>{
-    };
+    class PhysicsRectangle : public PhysicsShape<CenteredRectangle, AABB> 
+    {};
 }
 

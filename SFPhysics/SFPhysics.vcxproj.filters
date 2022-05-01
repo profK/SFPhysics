@@ -72,7 +72,7 @@
     <ClInclude Include="include\SFPhysics\CenteredSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsShape.h">
+    <ClInclude Include="include\SFPhysics\PhysicsShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

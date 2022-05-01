@@ -6,10 +6,9 @@
 using namespace sf;
 
 namespace sfp {
-    class PhysicsCircle : public PhysicsShape<CenteredCircle, CircleBounds>
+    class PhysicsCircle : public PhysicsShape<CenteredCircle,CircleBounds>
     {
-    public:
-        PhysicsCircle();
+    
     };
 }
 

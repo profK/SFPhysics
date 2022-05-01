@@ -104,12 +104,12 @@ namespace MSTests
 		}
 
 
-/*
+
 		TEST_METHOD(SFMLBinding)
 		{
 			World world(Vector2f(0, 1));
 			PhysicsCircle circle;
-			Scircle.setCenter(Vector2f(100, 100));
+			circle.setCenter(Vector2f(100, 100));
 			circle.setSize(Vector2f(50, 50));
 			world.AddPhysicsBody(circle.getBody());
 			PhysicsRectangle fallingRect;
@@ -126,7 +126,7 @@ namespace MSTests
 			Texture landerTex;
 			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
-			lander.getShape().setImage(landerTex);
+			//lander.setT;
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
 			RenderWindow window(VideoMode(800, 600), "Test Window");
@@ -142,18 +142,18 @@ namespace MSTests
 				world.UpdatePhysics(deltaMs);
 				last = current;
 				world.VisualizeAllBounds(window);
-				Font fnt;
-				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
-				Text text("Push space to continue...", fnt);
-				text.setPosition(0, 500);
+				//Font fnt;
+				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
+				//Text text("Push space to continue...", fnt);
+				//text.setPosition(0, 500);
 				window.draw(circle.getShape());
 				window.draw(fallingRect.getShape());
 				window.draw(floor.getShape());
-				window.draw(text);
+				//window.draw(text);
 				window.draw(lander.getShape());
 				window.display();
 			}
-		}*/
+		}
 	};
 
 }

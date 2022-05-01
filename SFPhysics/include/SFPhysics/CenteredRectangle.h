@@ -9,6 +9,7 @@ namespace sfp {
         public CenteredShape, public RectangleShape
     {
     public:
+        CenteredRectangle();
         CenteredRectangle(Vector2f size);
         // Inherited via CenterPositionedShape
         virtual void setCenter(Vector2f center) override;
