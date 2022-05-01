@@ -26,7 +26,6 @@ https://www.nuget.org/packages/SFPhysics/
 https://github.com/profK/Breakout2  
 
 ## PLANNED EXTENSIONS
-* Physics SFML extensions for the rest of the SFML drawing types
 * Location-bin based collision acceleration
 * "Sleeping" based collision acceleration
 * Documentation
