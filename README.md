@@ -30,3 +30,7 @@ https://github.com/profK/Breakout2
 * Location-bin based collision acceleration
 * "Sleeping" based collision acceleration
 * Documentation
+  
+## RELEASE NOTES
+Version 1.0 has been released.  It is feature complkete and passses all the tests I have for it.
+There may be bugs.  And documentation is still forthcoming.
