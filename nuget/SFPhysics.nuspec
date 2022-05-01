@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,8 +13,10 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version is feature complete, there may be bug fixes 
-      or future functionality added.
+      This version added back in PhysicsShape callbacks that got lost
+      in the refactor.
+
+      Documentation is forthcoming.
 
     </description>
     <releaseNotes></releaseNotes>
