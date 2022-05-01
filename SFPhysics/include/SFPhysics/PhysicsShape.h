@@ -26,6 +26,7 @@ namespace sfp {
 		Vector2f getSize();
 		virtual void collisionCallback(
 			PhysicsBodyCollisionResult& result);
+		virtual void updateCallback(unsigned int deltaMs);
 	};
 
 	template<class ShapeClass, class BoundsClass>
@@ -42,6 +43,9 @@ namespace sfp {
 		};
 		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
 			collisionCallback(result);
+		};
+		body.onUpdate = [this](unsigned int deltaMs) {
+			updateCallback(deltaMs);
 		};
 
 	}
@@ -80,6 +84,12 @@ namespace sfp {
 
 	template<class ShapeClass, class BoundsClass>
 	inline void PhysicsShape<ShapeClass, BoundsClass>::collisionCallback(PhysicsBodyCollisionResult& result)
+	{
+		//nop
+	}
+
+	template<class ShapeClass, class BoundsClass>
+	inline void PhysicsShape<ShapeClass, BoundsClass>::updateCallback(unsigned int deltaMs)
 	{
 		//nop
 	}
