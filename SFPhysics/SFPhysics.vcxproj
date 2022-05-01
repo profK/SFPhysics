@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CenteredConvexShape.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="include\SFPhysics.h" />
     <ClInclude Include="include\SFPhysics\AABB.h" />
@@ -180,10 +181,12 @@
     <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PhysicsConvexPolygon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
     <ClCompile Include="CenteredCircle.cpp" />
+    <ClCompile Include="CenteredConvexShape.cpp" />
     <ClCompile Include="CenteredRectangle.cpp" />
     <ClCompile Include="CenteredShape.cpp" />
     <ClCompile Include="CenteredSprite.cpp" />
@@ -199,6 +202,7 @@
     <ClCompile Include="PhysicsBody.cpp" />
     <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
     <ClCompile Include="PhysicsCircle.cpp" />
+    <ClCompile Include="PhysicsConvexPolygon.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
     <ClCompile Include="PhysicsShape.cpp" />
     <ClCompile Include="PhysicsSprite.cpp" />

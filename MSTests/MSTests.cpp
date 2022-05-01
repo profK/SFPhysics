@@ -127,6 +127,13 @@ namespace MSTests
 			lander.setTexture(landerTex);
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
+			PhysicsConvexPolygon ship;
+			ship.getShape().setPointCount(3);
+			ship.setPoint(0, Vector2f(-25, 25));
+			ship.setPoint(1, Vector2f(0, -30));
+			ship.setPoint(2, Vector2f(25, 25));
+			ship.setCenter(Vector2f(400, 50));
+			world.AddPhysicsBody(ship.getBody());
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
@@ -149,6 +156,7 @@ namespace MSTests
 				window.draw(floor.getShape());
 				//window.draw(text);
 				window.draw(lander.getShape());
+				window.draw(ship.getShape());
 				window.display();
 			}
 		}
