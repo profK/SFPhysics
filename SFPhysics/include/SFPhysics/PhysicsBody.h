@@ -35,8 +35,12 @@ namespace sfp {
 		bool getStatic();
 		void setStatic(bool s);
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
-		virtual void collisionCallback(PhysicsBodyCollisionResult& collision);
-		virtual void updateCallback(unsigned int deltaMS);
+		function<void(PhysicsBodyCollisionResult&)> onCollision = [this](PhysicsBodyCollisionResult& other) {
+			//nop
+		};
+		function<void(float deltaMS)> onUpdate = [this](float deltaMS) {
+			//nop
+		};
 	};
 }
 

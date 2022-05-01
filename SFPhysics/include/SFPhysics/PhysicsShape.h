@@ -24,6 +24,8 @@ namespace sfp {
 		void setSize(Vector2f size);
 		Vector2f getCenter();
 		Vector2f getSize();
+		virtual void onCollision(
+			PhysicsBodyCollisionResult& result);
 	};
 
 	template<class ShapeClass, class BoundsClass>
@@ -37,6 +39,9 @@ namespace sfp {
 
 		bounds.onMove = [this](Vector2f pos) {
 			this->getShape().setCenter(pos);
+		};
+		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
+			onCollision(result);
 		};
 
 	}
@@ -71,6 +76,11 @@ namespace sfp {
 	inline Vector2f PhysicsShape<ShapeClass, BoundsClass>::getSize()
 	{
 		return shape.getSize();
+	}
+	template<class ShapeClass, class BoundsClass>
+	inline void PhysicsShape<ShapeClass, BoundsClass>::onCollision(PhysicsBodyCollisionResult& result)
+	{
+		//nop
 	}
 }
 
