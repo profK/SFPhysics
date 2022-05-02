@@ -36,7 +36,7 @@ https://github.com/profK/Breakout2
 * Documentation
   
 ## RELEASE NOTES
-Version 0.2.0 has been released.  It is feature complete and passses all the tests I have for it.  The largest addition is the
+Version 1.2.0 has been released.  It is feature complete and passses all the tests I have for it.  The largest addition is the
 collision pruning based on motion.
 There still may be bugs.  And documentation is still forthcoming.
 
