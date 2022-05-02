@@ -99,7 +99,7 @@ void sfp::PhysicsBody::setStatic(bool s)
 
 void sfp::PhysicsBody::update(unsigned int deltaMilliseconds)
 {
-	cout << "in update ms=" << deltaMilliseconds << endl;
+	//cout << "in update ms=" << deltaMilliseconds << endl;
 	if (!isStatic) {
 		Vector2f pos = bounds->getPosition();
 		pos += (velocity * (float)deltaMilliseconds);
