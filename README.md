@@ -18,13 +18,14 @@ https://www.nuget.org/packages/SFPhysics/
 * Hooks for responding to collisions and movement
 * Collision bounds visualization (very useful for application debugging)
 * Currently has prebuilt Physics SFML extensions for CircleShape, RectangleShape, Sprite and ConvexShape
+* Movement based collision optimization (can be disabled)
 
 ## LIMITATIONS
 * Only supports Circular bounds and Axis-Aligned Bounding Boxes
 * Only support simple hard bodies (no joints)
 * Euler integrator can miss inter-frame collisions
-* Currently undocumented
-* Movement based collision optimization (can be disabled)
+* Code currently undocumented
+
 
 ## Documentation
 System architecture: https://github.com/profK/SFPhysics/wiki
