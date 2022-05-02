@@ -21,13 +21,15 @@ https://www.nuget.org/packages/SFPhysics/
 * Only support simple hard bodies (no joints)
 * Euler integrator can miss inter-frame collisions
 * Currently undocumented
+* Movement based collision optimization (can be disabled)
+
+## Documentation
+System architecture: https://github.com/profK/SFPhysics/wiki
 
 ## EXAMPLES
 https://github.com/profK/Breakout2  
 
 ## PLANNED EXTENSIONS
-* Location-bin based collision acceleration
-* "Sleeping" based collision acceleration
 * Documentation
   
 ## RELEASE NOTES
