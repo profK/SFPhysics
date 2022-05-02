@@ -47,7 +47,7 @@ There still may be bugs.  And documentation is still forthcoming.
     https://www.nuget.org/packages/SFPhysics/  
     https://www.nuget.org/packages/SFML_VS2019/  
 3. include <SFML/Graphics.hpp>  and <SFPhysics.h> in your main file
-4. The physics simulation is controlled by a World object.  Use the PhysicsShape classes (PhysicsCircle, PhysicsRectangle, PhysicsConvexPolygon and PhysicsSprite) to create SFML drawable objects that participate in the physics simulation and add them to the world with World.AddPhysicsBody  Obects that participate in collision but do not move or are moved manually by game logic can be set to effectively infinite mass by calling PhysicsShape.getBody().setStatic(true);
+4. The physics simulation is controlled by a World object.  Use the PhysicsShape classes (PhysicsCircle, PhysicsRectangle, PhysicsConvexPolygon and PhysicsSprite) to create SFML drawable objects that participate in the physics simulation and add them to the world with World.AddPhysicsBody(). Obects that participate in collision but do not move or are moved manually by game logic can be set to effectively infinite mass by calling PhysicsShape.getBody().setStatic(true);
 5. In your SFML render loop, "tick' the physics simulation by calling World.UpdatePhysics(elapsedMS) where elapsedMS is the miliseconds since the last physics update call.
 6. Render your PhysicsShapes by using PhysicsShape.getShape() to retrieve an SFML drawable.  
 
