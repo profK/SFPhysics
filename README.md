@@ -37,10 +37,10 @@ There still may be bugs.  And documentation is still forthcoming.
 
 ## Getting Started
 1.  Create a C++ desktop project
-2.  Import SFML and SFPhysics into your project 
-    The easiest way is with these nuget packages:
-    https://www.nuget.org/packages/SFPhysics/
-    https://www.nuget.org/packages/SFML_VS2019/
+2.  Import SFML and SFPhysics into your project.   
+    The easiest way is with these nuget packages:  
+    https://www.nuget.org/packages/SFPhysics/  
+    https://www.nuget.org/packages/SFML_VS2019/  
 3. include <SFML/Graphics.hpp>  and <SFPhysics.h> in your main file
 4. Below is a "Hello Physics" example of a ball bouncing off a floor:
   
