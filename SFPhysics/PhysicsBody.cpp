@@ -23,7 +23,10 @@ sfp::PhysicsBody::PhysicsBody(Bounds& bounds, bool isStatic,
 
 void sfp::PhysicsBody::setPosition(Vector2f center)
 {
-	bounds->setPosition(center);
+	if (bounds->getPosition() != center) {
+		bounds->setPosition(center);
+		moved = true;
+	}
 }
 
 Vector2f sfp::PhysicsBody::getPosition()
@@ -100,11 +103,12 @@ void sfp::PhysicsBody::setStatic(bool s)
 void sfp::PhysicsBody::update(unsigned int deltaMilliseconds)
 {
 	//cout << "in update ms=" << deltaMilliseconds << endl;
+	moved = false;
 	if (!isStatic) {
 		Vector2f pos = bounds->getPosition();
 		pos += (velocity * (float)deltaMilliseconds);
 		//pos += velocity * 10.0f;
-		bounds->setPosition(pos);
+		setPosition(pos);
 	}
 	if (onUpdate) onUpdate(deltaMilliseconds);
 }
@@ -126,6 +130,18 @@ PhysicsBodyCollisionResult sfp::PhysicsBody::collideWith(
 	}
 	return collision;
 }
+
+void sfp::PhysicsBody::setMoved(bool moved)
+{
+	this->moved = moved;
+}
+
+bool sfp::PhysicsBody::hasMoved()
+{
+	return moved;
+}
+
+
 
 
 

@@ -70,7 +70,7 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 		// do collision, very stupid right now. long run should not check 
 		// objecst that havent moved
 		for (auto obj2 : objects) {
-			if (obj != obj2) {
+			if ((obj != obj2)&&(ignoreMovement||obj->hasMoved()||obj2->hasMoved())) {
 				PhysicsBodyCollisionResult collision =
 					obj->collideWith(*obj2);
 				if (collision.hasCollided) {
@@ -93,4 +93,9 @@ void sfp::World::VisualizeAllBounds(RenderWindow& window)
 	for (auto obj : objects) {
 		obj->visualizeBounds(window);
 	}
+}
+
+void sfp::World::setIgnoreMovement(bool  ignore)
+{
+	ignoreMovement = ignore;
 }

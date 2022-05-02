@@ -15,6 +15,8 @@ namespace sfp {
 		float mass;
 		bool isStatic;
 		Vector2f velocity;
+		bool moved;
+	
 	public:
 		PhysicsBody();
 		PhysicsBody(Bounds& bounds, bool isStatic = false,
@@ -35,6 +37,9 @@ namespace sfp {
 		bool getStatic();
 		void setStatic(bool s);
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
+		void setMoved(bool moved = false);
+		bool hasMoved();
+		
 		function<void(PhysicsBodyCollisionResult&)> onCollision = [this](PhysicsBodyCollisionResult& other) {
 			//nop
 		};

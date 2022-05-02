@@ -12,6 +12,7 @@ namespace sfp {
 	private:
 		Vector2f gravity;
 		list<PhysicsBody*> objects; // becomes ptrs internally but never exposed
+		bool ignoreMovement;
 	public:
 		World(Vector2f gravity);
 
@@ -19,6 +20,7 @@ namespace sfp {
 		void RemovePhysicsBody(PhysicsBody& obj);
 		void UpdatePhysics(unsigned long deltaMilliseconds);
 		void VisualizeAllBounds(RenderWindow& window);
+		void setIgnoreMovement(bool ignore = true);
 	};
 }
 
