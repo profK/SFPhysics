@@ -3,8 +3,7 @@
 ![image](https://user-images.githubusercontent.com/4048613/166339619-9e51b359-07c4-461d-841e-e6493b1cd180.png)
 
 
-This is a basic 2D collision library for SFML.  Its is quite fast (although some future further optimizations are intended).  
-It presents an API similar to SFML's API in that it is totally pointerless.  Simple games can be written with just stack allocation.
+This is a basic 2D collision library for SFML.  Its is quite fast and presents an API similar to SFML's API in that it is totally pointerless.  Simple games can be written with just stack allocation.
 
 Its features and limitations are as follows:
 
