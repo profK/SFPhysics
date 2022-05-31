@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,8 +13,7 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version  added motion based collision test pruning.
-      It can be disabled with World.setIgnoreMovement(true)
+      This version fixes a collision callback bug that was resulting in extraneous callbacks
 
       Documentation is forthcoming.
 

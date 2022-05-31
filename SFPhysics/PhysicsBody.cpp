@@ -125,9 +125,6 @@ PhysicsBodyCollisionResult sfp::PhysicsBody::collideWith(
 {
 	PhysicsBodyCollisionResult collision(*this,other,
 		this->bounds->collideWith(*other.bounds));
-	if (collision.hasCollided) {
-		if (onCollision) onCollision(collision);
-	}
 	return collision;
 }
 
