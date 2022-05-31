@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <functional>
+#include <any>
 
 
 using namespace std;
@@ -28,6 +29,7 @@ namespace sfp {
 		function<void(Vector2f)> onMove=[this](Vector2f pos){
 			//nop
 		};
+		any extraData;
 	};
 }
 

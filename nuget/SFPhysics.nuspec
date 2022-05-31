@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,8 +13,10 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version fixes a collision callback bug that was resulting in extraneous callbacks
-
+      This version fixes some compile issues with the previous version and
+      Adds an extraData field to  CollisionBounds that can be used to carry
+      information into the onCollision routines.
+      
       Documentation is forthcoming.
 
     </description>
