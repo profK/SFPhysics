@@ -77,9 +77,6 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 					if (collision.object1.onCollision) {
 						collision.object1.onCollision(collision);
 					}
-					if (collision.object2.onCollision) {
-						collision.object2.onCollision(collision);
-					}
 					ResolveCollision(collision);
 				}
 			}

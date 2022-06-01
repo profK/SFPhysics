@@ -29,7 +29,10 @@ namespace sfp {
 		function<void(Vector2f)> onMove=[this](Vector2f pos){
 			//nop
 		};
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703L) || __cplusplus >= 201703L)
+		//C++17 specific stuff here
 		any extraData;
+#endif
 	};
 }
 

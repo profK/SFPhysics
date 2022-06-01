@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,9 +13,9 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version fixes some compile issues with the previous version and
-      Adds an extraData field to  CollisionBounds that can be used to carry
-      information into the onCollision routines.
+      This version makes the extraData only available on C++ 17+
+      for backward comaptability with C++14.  Also fixes a duplication
+      of callbacks issue.
       
       Documentation is forthcoming.
 
