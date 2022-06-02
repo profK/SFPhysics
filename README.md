@@ -40,6 +40,10 @@ Version 1.2.0 has been released.  It is feature complete and passses all the tes
 collision pruning based on motion.
 There still may be bugs.  And documentation is still forthcoming.
 
+Version 1.4.1 has been released.  Primary changes are:
+1. bug fixes to solve getting multiple PhysicsBody.onCollision callbacks from the same collision
+2. Added an any type field extraData to PhysicsBody to allow user to attach app specific data (only available on C++ 17 and higher)
+
 ## Getting Started
 1.  Create a C++ desktop project
 2.  Import SFML and SFPhysics into your project.   
