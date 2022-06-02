@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,11 +13,9 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version makes the extraData only available on C++ 17+
-      for backward comaptability with C++14.  Also fixes a duplication
-      of callbacks issue.
+      Fixed bug in late set of texture on PhysicsSprite
       
-      Documentation is forthcoming.
+      Basic documentation is at https://github.com/profK/SFPhysics.
 
     </description>
     <releaseNotes></releaseNotes>

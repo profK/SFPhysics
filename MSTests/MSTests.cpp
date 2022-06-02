@@ -124,9 +124,9 @@ namespace MSTests
 			Texture landerTex;
 			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
-			lander.setTexture(landerTex);
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
+			lander.setTexture(landerTex);
 			PhysicsConvexPolygon ship;
 			ship.getShape().setPointCount(3);
 			ship.setPoint(0, Vector2f(-25, 25));
