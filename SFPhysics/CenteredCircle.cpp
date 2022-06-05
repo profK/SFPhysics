@@ -27,5 +27,6 @@ void sfp::CenteredCircle::setSize(Vector2f sz)
 Vector2f sfp::CenteredCircle::getSize()
 {
 	float radius = getRadius();
-	return Vector2f(radius,radius);
+	Vector2f val(radius, radius);
+	return val;
 }

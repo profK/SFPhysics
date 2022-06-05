@@ -72,13 +72,16 @@
     <ClInclude Include="include\SFPhysics\CenteredSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\SFPhysics\PhysicsShape.h">
+    <ClInclude Include="include\SFPhysics\PhysicsShapeGlue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsConvexPolygon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CenteredConvexShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PhysicsShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,7 +134,7 @@
     <ClCompile Include="CenteredSprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsShape.cpp">
+    <ClCompile Include="PhysicsShapeGlue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsConvexPolygon.cpp">

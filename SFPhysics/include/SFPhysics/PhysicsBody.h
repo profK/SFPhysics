@@ -19,14 +19,25 @@ namespace sfp {
 	
 	public:
 		PhysicsBody();
+		PhysicsBody(PhysicsBody& other);
 		PhysicsBody(Bounds& bounds, bool isStatic = false,
 			float restitution=1.0f,float mass=1.0f);
+		PhysicsBody& operator = (const PhysicsBody& other) {
+			restitution = other.restitution;
+			mass = other.mass;
+			isStatic = other.isStatic;
+			*bounds = *other.bounds;
+			return *this;
+		}
+		bool operator == (PhysicsBody other) {
+			return (this == &other);
+		}
 		void applyImpulse(Vector2f impulse);
 		void update(unsigned int deltaMillisconds);
 		void setPosition(Vector2f center);
 		Vector2f getPosition();
-		Bounds& getBounds();
-		void setBounds(Bounds& bounds);
+		virtual Bounds& getBounds();
+		virtual void setBounds(Bounds& bounds);
 		void visualizeBounds(RenderWindow& window);
 		Vector2f getVelocity();
 		virtual void setVelocity(Vector2f v);

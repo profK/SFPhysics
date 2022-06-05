@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
-#include "PhysicsBody.h"
+#include "PhysicsShape.h"
 
 using namespace sf;
 using namespace std;
@@ -11,13 +11,13 @@ namespace sfp {
 	{
 	private:
 		Vector2f gravity;
-		list<PhysicsBody*> objects; // becomes ptrs internally but never exposed
 		bool ignoreMovement;
+		vector<reference_wrapper<PhysicsShape>> objects;
 	public:
+		
 		World(Vector2f gravity);
-
-		void AddPhysicsBody(PhysicsBody& obj);
-		void RemovePhysicsBody(PhysicsBody& obj);
+		void AddPhysicsShape(PhysicsShape& shape);
+		vector<reference_wrapper<PhysicsShape>> getShapeRefs();
 		void UpdatePhysics(unsigned long deltaMilliseconds);
 		void VisualizeAllBounds(RenderWindow& window);
 		void setIgnoreMovement(bool ignore = true);

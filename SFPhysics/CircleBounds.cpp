@@ -88,10 +88,6 @@ Vector2f sfp::CircleBounds::getPosition()
 
 void sfp::CircleBounds::setPosition(Vector2f center)
 {
-    if (onMove){
-        onMove(center);
-    }
-   
     position = center;
 }
 
@@ -117,7 +113,7 @@ Vector2f sfp::CircleBounds::getSize()
 
 void sfp::CircleBounds::visualize(RenderWindow& window)
 {
-    visual.setRadius(radius);
+    //visual.setRadius(radius);
     visual.setPosition(position-Vector2f(radius,radius));
     visual.setFillColor(Color::Transparent);
     visual.setOutlineColor(Color::White);

@@ -51,28 +51,31 @@ sfp::World::World(Vector2f gravity):
 
 }
 
-
-
-void sfp::World::AddPhysicsBody(PhysicsBody& obj)
+void sfp::World::AddPhysicsShape(PhysicsShape& shape)
 {
-	objects.push_back(&obj);
+	PhysicsShape& clone = shape.clone();
+	objects.push_back(clone);
 }
 
-void sfp::World::RemovePhysicsBody(PhysicsBody& obj)
+vector<reference_wrapper<sfp::PhysicsShape>> sfp::World::getShapeRefs()
 {
-	objects.remove(&obj);
+	return objects;
 }
+
+
 
 void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 {
-	for (auto obj : objects) {
-		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
+	for (auto ref : objects) {
+		PhysicsShape& obj = ref.get();
+		obj.getBody().applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
 		// do collision, very stupid right now. long run should not check 
 		// objecst that havent moved
-		for (auto obj2 : objects) {
-			if ((obj != obj2)&&(ignoreMovement||obj->hasMoved()||obj2->hasMoved())) {
+		for (auto ref2 : objects) {
+			PhysicsShape& obj2 = ref.get();
+			if ((&obj != &obj2)&&(ignoreMovement||obj.getBody().hasMoved()||obj2.getBody().hasMoved())) {
 				PhysicsBodyCollisionResult collision =
-					obj->collideWith(*obj2);
+					obj.getBody().collideWith(obj2.getBody());
 				if (collision.hasCollided) {
 					if (collision.object1.onCollision) {
 						collision.object1.onCollision(collision);
@@ -81,14 +84,18 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 				}
 			}
 		}
-		obj->update(deltaMilliseconds);
+		obj.getBody().update(deltaMilliseconds);
+		Vector2f pos = obj.getBody().getPosition();
+		CenteredShape& shape = obj.getShape();
+		shape.setCenter(pos); 
 	}
 }
 
 void sfp::World::VisualizeAllBounds(RenderWindow& window)
 {
-	for (auto obj : objects) {
-		obj->visualizeBounds(window);
+	for (auto ref : objects) {
+		PhysicsShape& obj = ref.get();
+		obj.getBody().visualizeBounds(window);
 	}
 }
 

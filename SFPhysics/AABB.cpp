@@ -188,7 +188,6 @@ void sfp::AABB::setPosition(Vector2f center)
     Vector2f halfSize = (max - min)/2.0f;
     min = center - halfSize;
     max = center + halfSize;
-    if(onMove) onMove(center);
 }
 
 void sfp::AABB::setSize(Vector2f extents)

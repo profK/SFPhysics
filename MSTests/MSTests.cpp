@@ -6,8 +6,11 @@
 #include "../SFPhysics/include/SFPhysics.h"
 #include <ctime> 
 #include <chrono>
+#include <string>
+#include <sstream>
+#include "CppUnitTest.h"
 
-
+using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sfp;
 using namespace std::chrono;
@@ -65,23 +68,18 @@ namespace MSTests
 
 		}
 
-
-		TEST_METHOD(VisualTest)
+		TEST_METHOD(CopyTests)
 		{
 			World world(Vector2f(0, 1));
-			CircleBounds cbounds(Vector2f(100, 100), 50);
-			PhysicsBody b1(cbounds);
-			world.AddPhysicsBody(b1);
-			AABB rBounds1(Vector2f(0, 0), Vector2f(40, 120));
-			PhysicsBody pb2;
-			pb2.setBounds(rBounds1);
-			world.AddPhysicsBody(pb2);
-			AABB rBounds2(Vector2f(0, 550), Vector2f(800, 600));
-			PhysicsBody pb3;
-			pb3.setBounds(rBounds2);
-			pb3.setStatic(true);
-			world.AddPhysicsBody(pb3);
+			for (int i = 0; i < 10; i++) {
+				PhysicsCircle circle;
+				circle.setSize(Vector2f(30,30));
+				circle.setCenter(Vector2f(rand() % 800, rand() & 300));
+				world.AddPhysicsShape(circle);
+			}
 			RenderWindow window(VideoMode(800, 600), "Test Window");
+			
+			
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
 				window.clear(Color::Black);
@@ -93,18 +91,15 @@ namespace MSTests
 				}
 				world.UpdatePhysics(deltaMs);
 				last = current;
-				world.VisualizeAllBounds(window);
-				Font fnt;
-				//Assert::IsTrue(fnt.loadFromFile("arial.ttf"));
-				//Text text("Push space to continue...", fnt);
-				//text.setPosition(0, 500);
-				//window.draw(text);
+				//world.VisualizeAllBounds(window);
+				for (auto c : world.getShapeRefs()) {
+					PhysicsShape& shape = c.get();
+					window.draw(shape.getDrawable());
+				}
 				window.display();
 			}
 		}
-
-
-
+		/*
 		TEST_METHOD(SFMLBinding)
 		{
 			World world(Vector2f(0, 1));
@@ -122,7 +117,7 @@ namespace MSTests
 			floor.getBody().setStatic(true);
 			world.AddPhysicsBody(floor.getBody());
 			Texture landerTex;
-			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
+			//Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
@@ -159,7 +154,7 @@ namespace MSTests
 				window.draw(ship.getShape());
 				window.display();
 			}
-		}
+		}*/
 	};
 
 }

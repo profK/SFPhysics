@@ -14,6 +14,14 @@ sfp::PhysicsBody::PhysicsBody():
 {
 }
 
+sfp::PhysicsBody::PhysicsBody(PhysicsBody& other)
+{
+	restitution = other.restitution;
+	mass = other.mass;
+	isStatic = other.isStatic;
+	*bounds = *other.bounds;
+}
+
 sfp::PhysicsBody::PhysicsBody(Bounds& bounds, bool isStatic, 
 	float restitution,float mass):
 	bounds(&bounds),restitution(restitution),mass(mass),

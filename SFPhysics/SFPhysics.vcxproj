@@ -112,6 +112,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(ProjectDir)include/SFPhysics;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="CenteredConvexShape.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="include\PhysicsShape.h" />
     <ClInclude Include="include\SFPhysics.h" />
     <ClInclude Include="include\SFPhysics\AABB.h" />
     <ClInclude Include="include\SFPhysics\Bounds.h" />
@@ -179,7 +181,7 @@
     <ClInclude Include="include\SFPhysics\PhysicsBodyCollisionResult.h" />
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
-    <ClInclude Include="include\SFPhysics\PhysicsShape.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsShapeGlue.h" />
     <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
@@ -206,7 +208,7 @@
     <ClCompile Include="PhysicsCircle.cpp" />
     <ClCompile Include="PhysicsConvexPolygon.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
-    <ClCompile Include="PhysicsShape.cpp" />
+    <ClCompile Include="PhysicsShapeGlue.cpp" />
     <ClCompile Include="PhysicsSprite.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />
