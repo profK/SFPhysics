@@ -18,6 +18,14 @@ namespace sfp {
 
 	public:
 		PhysicsShape();
+		PhysicsShape(const PhysicsShape& other);
+		PhysicsShape& operator = (PhysicsShape other) {
+			body = other.body;
+			bounds = other.bounds;
+			body.setBounds(bounds);
+			shape = other.shape; 
+			return *this;
+		}
 		PhysicsBody& getBody();
 		ShapeClass& getShape();
 		void setCenter(Vector2f center);
@@ -49,6 +57,28 @@ namespace sfp {
 		};
 
 	}
+	template<class ShapeClass, class BoundsClass>
+	inline PhysicsShape<ShapeClass, BoundsClass>::PhysicsShape(const PhysicsShape& other)
+	{
+		body = other.body;
+		body.setBounds(bounds);
+		shape = other.shape;
+		bounds = other.bounds;
+		bounds.onMove = [this](Vector2f pos) {
+			this->getShape().setCenter(pos);
+		};
+		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
+			collisionCallback(result);
+		};
+		body.onUpdate = [this](unsigned int deltaMs) {
+			updateCallback(deltaMs);
+		};
+	}
+
+	
+
+	
+	
 	template<class ShapeClass, class BoundsClass>
 	inline PhysicsBody& PhysicsShape<ShapeClass, BoundsClass>::getBody()
 	{

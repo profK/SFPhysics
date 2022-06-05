@@ -65,6 +65,45 @@ namespace MSTests
 
 		}
 
+		TEST_METHOD(ListTest)
+		{
+			PhysicsCircle c1;
+			PhysicsCircle c2;
+			c2=c1;
+			World world(Vector2f(0, 1));
+			vector<PhysicsCircle> circles;
+			circles.reserve(15);
+			for (int i(0); i < 15; i++) {
+				PhysicsCircle c;
+				c.setSize(Vector2f(300, 30));
+				c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
+				circles.push_back(c);
+				world.AddPhysicsBody(circles.data()[i].getBody());
+			}
+			RenderWindow window(VideoMode(800, 600), "Test Window");
+			system_clock::time_point last = system_clock::now();
+			while (!Keyboard::isKeyPressed(Keyboard::Space)){	
+				system_clock::time_point current = system_clock::now();
+				unsigned int deltaMs =
+					std::chrono::duration_cast<std::chrono::milliseconds>(current - last).count();
+				if (deltaMs == 0) {
+					continue;
+				}
+				window.clear(Color::Black);
+				world.UpdatePhysics(deltaMs);
+				last = current;
+				//world.VisualizeAllBounds(window);
+				//Font fnt;
+				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
+				//Text text("Push space to continue...", fnt);
+				//text.setPosition(0, 500);
+				for (auto circle : circles)
+					window.draw(circle.getShape());
+				window.display();
+			}
+
+		}
+
 
 		TEST_METHOD(VisualTest)
 		{
@@ -101,6 +140,7 @@ namespace MSTests
 				//window.draw(text);
 				window.display();
 			}
+			
 		}
 
 
@@ -122,7 +162,7 @@ namespace MSTests
 			floor.getBody().setStatic(true);
 			world.AddPhysicsBody(floor.getBody());
 			Texture landerTex;
-			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
+			//Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
