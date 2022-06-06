@@ -9,6 +9,8 @@ class PhysicsShapeList
 {
 
 	using ListType = list<PhysicsShapeClass*>;
+	using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShapeClass*>>>;
+
 	
 private:
 	ListType list;
@@ -21,8 +23,8 @@ public:
 	using reference = PhysicsShapeClass&;  // or also value_type&
 
 	struct iterator   {
-		ListType::iterator lIter;
-		iterator(ListType::iterator iter) { lIter = iter; }
+		ListIter lIter;
+		iterator(ListIter iter) { lIter = iter; }
 
 		reference operator*() const { return **lIter; }
 		pointer operator->() { return lIter.operator->(); }
