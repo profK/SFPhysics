@@ -13,7 +13,31 @@ class PhysicsShapeList
 private:
 	ListType list;
 public:
-	typedef typename ListType::iterator iterator;
+
+	using iterator_category = std::forward_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using value_type = PhysicsShapeClass;
+	using pointer = PhysicsShapeClass*;  // or also value_type*
+	using reference = PhysicsShapeClass&;  // or also value_type&
+
+	struct iterator   {
+		ListType::iterator lIter;
+		iterator(ListType::iterator iter) { lIter = iter; }
+
+		reference operator*() const { return **lIter; }
+		pointer operator->() { return lIter.operator->(); }
+
+		// Prefix increment
+		iterator& operator++() {lIter++; return *this; }
+
+		// Postfix increment
+		iterator operator++(int) { iterator tmp = *this; ++lIter; return tmp; }
+
+		friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
+		friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
+
+	
+	};
 
 	PhysicsShapeClass& Create() {
 		PhysicsShapeClass* ptr = new PhysicsShapeClass();
@@ -26,10 +50,10 @@ public:
 	}
 	
 	iterator begin()  {
-		return list.begin();
+		return iterator(list.begin());
 	}
 	iterator end()  {
-		return list.end();
+		return iterator(list.end());
 	}
 };
 

@@ -100,7 +100,7 @@ namespace MSTests
 				//Text text("Push space to continue...", fnt);
 				//text.setPosition(0, 500);
 				for (auto circle : circles)
-					window.draw(circle->getShape());
+					window.draw(circle.getShape());
 				window.display();
 			}
 
