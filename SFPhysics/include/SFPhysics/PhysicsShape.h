@@ -26,6 +26,9 @@ namespace sfp {
 			shape = other.shape; 
 			return *this;
 		}
+		PhysicsShape& operator == (PhysicsShape& other) {
+			return this == &other;
+		}
 		PhysicsBody& getBody();
 		ShapeClass& getShape();
 		void setCenter(Vector2f center);

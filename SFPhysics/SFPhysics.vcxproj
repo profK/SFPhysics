@@ -181,6 +181,7 @@
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShape.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsShapeList.h" />
     <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="PhysicsConvexPolygon.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
     <ClCompile Include="PhysicsShape.cpp" />
+    <ClCompile Include="PhysicsShapeList.cpp" />
     <ClCompile Include="PhysicsSprite.cpp" />
     <ClCompile Include="SFPhysics.cpp" />
     <ClCompile Include="World.cpp" />

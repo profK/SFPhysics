@@ -16,3 +16,4 @@
 #include "SFPhysics/PhysicsShape.h"
 #include "SFPhysics/CenteredConvexShape.h"
 #include "SFPhysics/PhysicsConvexPolygon.h"
+#include "SFPhysics/PhysicsShapeList.h"

@@ -8,6 +8,7 @@
 #include <chrono>
 
 
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sfp;
 using namespace std::chrono;
@@ -67,19 +68,20 @@ namespace MSTests
 
 		TEST_METHOD(ListTest)
 		{
-			PhysicsCircle c1;
-			PhysicsCircle c2;
-			c2=c1;
+			PhysicsShapeList<PhysicsCircle> circles;
 			World world(Vector2f(0, 1));
-			vector<PhysicsCircle> circles;
-			circles.reserve(15);
-			for (int i(0); i < 15; i++) {
-				PhysicsCircle c;
+			for (int i(0); i < 4; i++) {
+				PhysicsCircle& c(circles.Create());
 				c.setSize(Vector2f(300, 30));
 				c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
-				circles.push_back(c);
-				world.AddPhysicsBody(circles.data()[i].getBody());
+				world.AddPhysicsBody(c.getBody());
 			}
+			PhysicsCircle& c(circles.Create());
+			c.setSize(Vector2f(300, 30));
+			c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
+			world.AddPhysicsBody(c.getBody());
+			world.RemovePhysicsBody(c.getBody());
+			circles.Remove(c);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)){	
@@ -98,7 +100,7 @@ namespace MSTests
 				//Text text("Push space to continue...", fnt);
 				//text.setPosition(0, 500);
 				for (auto circle : circles)
-					window.draw(circle.getShape());
+					window.draw(circle->getShape());
 				window.display();
 			}
 
