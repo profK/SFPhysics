@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.5.0</version>
+    <version>1.6.1</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -13,9 +13,8 @@
 
       It has a pointerless API that mimics the SFML API conventions.
 
-      This version now supports use of vector of PhysicsSHapes with the follwoing caveats:
-      (1) The vector must use reserved space and not grow beyond it in order to keep the data fromre locating
-      (2) You must pass vector.data[N].getBody() to world.AddPhysicsBody() in order to set it to the actual body and not a copy
+      Fixed hole in physics body removal logic.  It now delays removal until
+      the start of the next physics update
    
       
       Basic documentation is at https://github.com/profK/SFPhysics.

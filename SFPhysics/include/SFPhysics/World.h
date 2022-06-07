@@ -13,6 +13,7 @@ namespace sfp {
 		Vector2f gravity;
 		list<PhysicsBody*> objects; // becomes ptrs internally but never exposed
 		bool ignoreMovement;
+		list<PhysicsBody*> removalList;
 	public:
 		World(Vector2f gravity);
 

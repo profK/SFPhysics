@@ -60,11 +60,15 @@ void sfp::World::AddPhysicsBody(PhysicsBody& obj)
 
 void sfp::World::RemovePhysicsBody(PhysicsBody& obj)
 {
-	objects.remove(&obj);
+	removalList.push_back(&obj);
 }
 
 void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 {
+	// cleanup first
+	for (auto el : removalList) {
+		objects.remove(el);
+	}
 	for (auto obj : objects) {
 		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
 		// do collision, very stupid right now. long run should not check 

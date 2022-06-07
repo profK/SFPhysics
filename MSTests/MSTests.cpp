@@ -145,6 +145,35 @@ namespace MSTests
 			
 		}
 
+		TEST_METHOD(SetVelocityTest) {
+			RenderWindow window(VideoMode(800, 600), "Set velocity test");
+			World world(Vector2f(0, 0));
+			PhysicsCircle circle;
+			circle.setCenter(Vector2f(100, 100));
+			circle.setSize(Vector2f(50, 50));
+			circle.getBody().setVelocity(Vector2f(0, -1));
+			world.AddPhysicsBody(circle.getBody());
+			system_clock::time_point last = system_clock::now();
+			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
+				window.clear(Color::Black);
+				system_clock::time_point current = system_clock::now();
+				unsigned int deltaMs =
+					std::chrono::duration_cast<std::chrono::milliseconds>(current - last).count();
+				if (deltaMs == 0) {
+					continue;
+				}
+				world.UpdatePhysics(deltaMs);
+				last = current;
+				world.VisualizeAllBounds(window);
+				//Font fnt;
+				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
+				//Text text("Push space to continue...", fnt);
+				//text.setPosition(0, 500);
+				window.draw(circle.getShape());
+				window.display();
+			}
+		}
+
 
 
 		TEST_METHOD(SFMLBinding)
