@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.6.1</version>
+    <version>1.7.1</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -11,10 +11,11 @@
       It makes no attempt to detect or handle inter-frame collision misses.  It is
       however perfectly suitable for most classic 2D games.
 
-      It has a pointerless API that mimics the SFML API conventions.
+      Added a layer of indirection to physics shape callbacks, 
+      exposed as onCollision and onUpdate lambda hooks.
 
-      Fixed hole in physics body removal logic.  It now delays removal until
-      the start of the next physics update
+      Made PhysicsBody comparable with == and !=.  Comparsion
+      is by memory address.
    
       
       Basic documentation is at https://github.com/profK/SFPhysics.

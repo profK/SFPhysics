@@ -3,6 +3,7 @@
 #include "PhysicsBody.h"
 #include "CenteredShape.h"
 #include "Bounds.h"
+#include <functional>
 
 using namespace sf;
 
@@ -35,6 +36,14 @@ namespace sfp {
 		void setSize(Vector2f size);
 		Vector2f getCenter();
 		Vector2f getSize();
+		function<void(PhysicsBodyCollisionResult&)> onCollision = [this]
+			(PhysicsBodyCollisionResult& result) {
+				this->collisionCallback(result);
+			};
+		function<void(unsigned int)> onUpdate = [this]
+			(unsigned int deltaMS) {
+				this->updateCallback(deltaMS);
+			};
 		virtual void collisionCallback(
 			PhysicsBodyCollisionResult& result);
 		virtual void updateCallback(unsigned int deltaMs);
@@ -53,10 +62,14 @@ namespace sfp {
 			this->getShape().setCenter(pos);
 		};
 		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
-			collisionCallback(result);
+			if (onCollision) {
+				onCollision(result);
+			}
 		};
-		body.onUpdate = [this](unsigned int deltaMs) {
-			updateCallback(deltaMs);
+		body.onUpdate = [this](unsigned int deltaMS) {
+			if (onUpdate) {
+				onUpdate(deltaMS);
+			}
 		};
 
 	}

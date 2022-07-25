@@ -69,6 +69,7 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 	for (auto el : removalList) {
 		objects.remove(el);
 	}
+	removalList.clear();
 	for (auto obj : objects) {
 		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
 		// do collision, very stupid right now. long run should not check 
@@ -85,6 +86,8 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
 				}
 			}
 		}
+	}
+	for (auto obj : objects) {
 		obj->update(deltaMilliseconds);
 	}
 }

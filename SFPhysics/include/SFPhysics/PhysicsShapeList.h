@@ -14,6 +14,7 @@ class PhysicsShapeList
 	
 private:
 	ListType list;
+	ListType removalList;
 public:
 
 	using iterator_category = std::forward_iterator_tag;
@@ -38,7 +39,7 @@ public:
 		friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
 		friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
 
-	
+		
 	};
 
 	PhysicsShapeClass& Create() {
@@ -46,9 +47,20 @@ public:
 		list.push_back(ptr);
 		return *ptr;
 	};
+	void QueueRemove(PhysicsShapeClass& element) {
+		removalList.push_back(&element);
+	}
+
 	void Remove(PhysicsShapeClass& element) {
-		list.remove(&element);
-		delete &element;
+		QueueRemove(element);
+	}
+
+	void DoRemovals() {
+		for (auto element : removalList) {
+			list.remove(element);
+			delete element;
+		}
+		removalList.clear();
 	}
 	
 	iterator begin()  {

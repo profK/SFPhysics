@@ -7,7 +7,7 @@ using namespace sf;
 
 namespace sfp {
 	struct PhysicsBodyCollisionResult;
-	class PhysicsBody
+	class PhysicsBody 
 	{
 	protected:
 		Bounds* bounds; // has to be a pointer for late-set
@@ -39,6 +39,14 @@ namespace sfp {
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
 		void setMoved(bool moved = false);
 		bool hasMoved();
+
+		bool operator == (const PhysicsBody& other) {
+			return this == &other;
+		}
+
+		bool operator != (const PhysicsBody& other) {
+			return !(this->operator==(other));
+		}
 		
 		function<void(PhysicsBodyCollisionResult&)> onCollision = [this](PhysicsBodyCollisionResult& other) {
 			//nop
