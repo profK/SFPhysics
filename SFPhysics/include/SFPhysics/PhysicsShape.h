@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "PhysicsBody.h"
+#include "PhysicsBodyT.h"
 #include "CenteredShape.h"
 #include "Bounds.h"
 #include <functional>
@@ -13,20 +13,11 @@ namespace sfp {
 	class PhysicsShape
 	{
 	protected:
-		PhysicsBody body;
-		BoundsClass bounds;
+		PhysicsBodyT<BoundsClass> body;
 		ShapeClass shape;
 
 	public:
 		PhysicsShape();
-		PhysicsShape(const PhysicsShape& other);
-		PhysicsShape& operator = (PhysicsShape other) {
-			body = other.body;
-			bounds = other.bounds;
-			body.setBounds(bounds);
-			shape = other.shape; 
-			return *this;
-		}
 		PhysicsShape& operator == (PhysicsShape& other) {
 			return this == &other;
 		}
@@ -50,15 +41,14 @@ namespace sfp {
 	};
 
 	template<class ShapeClass, class BoundsClass>
-	inline PhysicsShape<ShapeClass, BoundsClass>::PhysicsShape():
-		body(bounds)
+	inline PhysicsShape<ShapeClass, BoundsClass>::PhysicsShape()
 	{
 		//static_assert(std::is_base_of<CenteredShape, ShapeClass>::value, 
 		//	"type parameter of this class must derive from CenteredShape");
 		//static_assert(std::is_base_of<BoundsClass, Bounds>::value,
 		//	"type parameter of this class must derive from Bounds");
 
-		bounds.onMove = [this](Vector2f pos) {
+		body.getBounds().onMove = [this](Vector2f pos) {
 			this->getShape().setCenter(pos);
 		};
 		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
@@ -71,25 +61,8 @@ namespace sfp {
 				onUpdate(deltaMS);
 			}
 		};
-
 	}
-	template<class ShapeClass, class BoundsClass>
-	inline PhysicsShape<ShapeClass, BoundsClass>::PhysicsShape(const PhysicsShape& other)
-	{
-		body = other.body;
-		body.setBounds(bounds);
-		shape = other.shape;
-		bounds = other.bounds;
-		bounds.onMove = [this](Vector2f pos) {
-			this->getShape().setCenter(pos);
-		};
-		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
-			collisionCallback(result);
-		};
-		body.onUpdate = [this](unsigned int deltaMs) {
-			updateCallback(deltaMs);
-		};
-	}
+	
 
 	
 
@@ -108,13 +81,13 @@ namespace sfp {
 	template<class ShapeClass, class BoundsClass>
 	inline void PhysicsShape<ShapeClass, BoundsClass>::setCenter(Vector2f center)
 	{
-		bounds.setPosition(center);
+		body.getBounds().setPosition(center);
 		shape.setCenter(center);
 	}
 	template<class ShapeClass, class BoundsClass>
 	inline void PhysicsShape<ShapeClass, BoundsClass>::setSize(Vector2f size)
 	{
-		bounds.setSize(size);
+		body.getBounds().setSize(size);
 		shape.setSize(size);
 	}
 	template<class ShapeClass, class BoundsClass>

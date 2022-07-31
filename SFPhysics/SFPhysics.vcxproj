@@ -178,6 +178,7 @@
     <ClInclude Include="include\SFPhysics\pch.h" />
     <ClInclude Include="include\SFPhysics\PhysicsBody.h" />
     <ClInclude Include="include\SFPhysics\PhysicsBodyCollisionResult.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsBodyT.h" />
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShape.h" />

@@ -84,6 +84,9 @@
     <ClInclude Include="include\SFPhysics\PhysicsShapeList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsBodyT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFPhysics.cpp">

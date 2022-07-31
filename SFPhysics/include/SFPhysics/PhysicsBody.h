@@ -10,7 +10,7 @@ namespace sfp {
 	class PhysicsBody 
 	{
 	protected:
-		Bounds* bounds; // has to be a pointer for late-set
+		
 		float restitution;
 		float mass;
 		bool isStatic;
@@ -25,7 +25,7 @@ namespace sfp {
 		void update(unsigned int deltaMillisconds);
 		void setPosition(Vector2f center);
 		Vector2f getPosition();
-		Bounds& getBounds();
+		virtual Bounds& getBounds()=0;
 		void setBounds(Bounds& bounds);
 		void visualizeBounds(RenderWindow& window);
 		Vector2f getVelocity();

@@ -9,47 +9,38 @@
 using namespace sfp;
 
 sfp::PhysicsBody::PhysicsBody():
-	bounds(NULL),restitution(1.0),mass(1.0),isStatic(false),
+	restitution(1.0),mass(1.0),isStatic(false),
 	velocity(Vector2f(0,0))
 {
 }
 
 sfp::PhysicsBody::PhysicsBody(Bounds& bounds, bool isStatic, 
 	float restitution,float mass):
-	bounds(&bounds),restitution(restitution),mass(mass),
+	restitution(restitution),mass(mass),
 	isStatic(isStatic),velocity(Vector2f(0,0))
 {
 }
 
 void sfp::PhysicsBody::setPosition(Vector2f center)
 {
-	if (bounds->getPosition() != center) {
-		bounds->setPosition(center);
+	if (getBounds().getPosition() != center) {
+		getBounds().setPosition(center);
 		moved = true;
 	}
 }
 
 Vector2f sfp::PhysicsBody::getPosition()
 {
-	return bounds->getPosition();
+	return getBounds().getPosition();
 }
 
-Bounds& sfp::PhysicsBody::getBounds()
-{
-	if (bounds == NULL) {
-		throw std::invalid_argument("Bounds of physics object not set.");
-	}
-	return *bounds;
-}
 
-void sfp::PhysicsBody::setBounds(Bounds& bounds)
-{
-	this->bounds = &bounds;
-}
+
+
 
 void sfp::PhysicsBody::visualizeBounds(RenderWindow& window)
 {
-	bounds->visualize(window);
+	getBounds().visualize(window);
 }
 
 Vector2f sfp::PhysicsBody::getVelocity()
@@ -105,7 +96,7 @@ void sfp::PhysicsBody::update(unsigned int deltaMilliseconds)
 	//cout << "in update ms=" << deltaMilliseconds << endl;
 	moved = false;
 	if (!isStatic) {
-		Vector2f pos = bounds->getPosition();
+		Vector2f pos = getBounds().getPosition();
 		pos += (velocity * (float)deltaMilliseconds);
 		//pos += velocity * 10.0f;
 		setPosition(pos);
@@ -124,7 +115,7 @@ PhysicsBodyCollisionResult sfp::PhysicsBody::collideWith(
 	PhysicsBody& other)
 {
 	PhysicsBodyCollisionResult collision(*this,other,
-		this->bounds->collideWith(*other.bounds));
+		this->getBounds().collideWith(other.getBounds()));
 	return collision;
 }
 

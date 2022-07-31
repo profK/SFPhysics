@@ -110,16 +110,12 @@ namespace MSTests
 		TEST_METHOD(VisualTest)
 		{
 			World world(Vector2f(0, 1));
-			CircleBounds cbounds(Vector2f(100, 100), 50);
-			PhysicsBody b1(cbounds);
+			
+			PhysicsBodyT<CircleBounds> b1;
 			world.AddPhysicsBody(b1);
-			AABB rBounds1(Vector2f(0, 0), Vector2f(40, 120));
-			PhysicsBody pb2;
-			pb2.setBounds(rBounds1);
+			PhysicsBodyT<AABB> pb2;
 			world.AddPhysicsBody(pb2);
-			AABB rBounds2(Vector2f(0, 550), Vector2f(800, 600));
-			PhysicsBody pb3;
-			pb3.setBounds(rBounds2);
+			PhysicsBodyT<AABB> pb3;
 			pb3.setStatic(true);
 			world.AddPhysicsBody(pb3);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
