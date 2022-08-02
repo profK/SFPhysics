@@ -194,7 +194,7 @@ namespace MSTests
 			floor.getBody().setStatic(true);
 			world.AddPhysicsBody(floor.getBody());
 			Texture landerTex;
-			//Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
+			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
 			lander.setCenter(Vector2f(600, 20));
 			world.AddPhysicsBody(lander.getBody());
