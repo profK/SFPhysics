@@ -112,10 +112,15 @@ namespace MSTests
 			World world(Vector2f(0, 1));
 			
 			PhysicsBodyT<CircleBounds> b1;
+			b1.getBounds().setSize(Vector2f(10, 10));
 			world.AddPhysicsBody(b1);
 			PhysicsBodyT<AABB> pb2;
+			pb2.getBounds().setSize(Vector2f(10, 10));
+			pb2.setPosition(Vector2f(400, 200));
 			world.AddPhysicsBody(pb2);
 			PhysicsBodyT<AABB> pb3;
+			pb3.getBounds().setSize(Vector2f(800, 20));
+			pb3.setPosition(Vector2f(400, 590));
 			pb3.setStatic(true);
 			world.AddPhysicsBody(pb3);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
