@@ -72,7 +72,7 @@ namespace MSTests
 			World world(Vector2f(0, 1));
 			for (int i(0); i < 4; i++) {
 				PhysicsCircle c;
-				c.setSize(Vector2f(300, 30));
+				c.setSize(Vector2f(30, 30));
 				c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
 				circles.push_back(c);
 				world.AddPhysicsBody(circles.back().getBody());
