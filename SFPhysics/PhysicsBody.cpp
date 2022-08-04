@@ -14,12 +14,7 @@ sfp::PhysicsBody::PhysicsBody():
 {
 }
 
-sfp::PhysicsBody::PhysicsBody(Bounds& bounds, bool isStatic, 
-	float restitution,float mass):
-	restitution(restitution),mass(mass),
-	isStatic(isStatic),velocity(Vector2f(0,0))
-{
-}
+
 
 void sfp::PhysicsBody::setPosition(Vector2f center)
 {

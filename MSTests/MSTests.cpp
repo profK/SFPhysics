@@ -95,8 +95,8 @@ namespace MSTests
 				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				Text text("Push space to continue...", fnt);
 				text.setPosition(0, 500);
-				//for (auto circle : circles)
-				//	window.draw(circle.getShape());
+				for (auto circle : circles)
+					window.draw(circle.getShape());
 				window.display();
 			}
 

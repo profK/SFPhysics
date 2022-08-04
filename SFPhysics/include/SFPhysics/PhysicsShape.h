@@ -18,6 +18,7 @@ namespace sfp {
 
 	public:
 		PhysicsShape();
+		PhysicsShape(const PhysicsShape<ShapeClass,BoundsClass>& other);
 		PhysicsShape& operator == (PhysicsShape& other) {
 			return this == &other;
 		}
@@ -62,7 +63,29 @@ namespace sfp {
 			}
 		};
 	}
+
+	template<class ShapeClass, class BoundsClass>
+	inline PhysicsShape<ShapeClass, BoundsClass>::PhysicsShape(const PhysicsShape < ShapeClass,
+		BoundsClass> &other)
+	{
+		body = other.body;
+		shape = other.shape;
+		body.getBounds().onMove = [this](Vector2f pos) {
+			this->getShape().setCenter(pos);
+		};
+		body.onCollision = [this](PhysicsBodyCollisionResult& result) {
+			if (onCollision) {
+				onCollision(result);
+			}
+		};
+		body.onUpdate = [this](unsigned int deltaMS) {
+			if (onUpdate) {
+				onUpdate(deltaMS);
+			}
+		};
+	}
 	
+
 
 	
 
