@@ -5,13 +5,13 @@ using namespace sfp;
 
 void sfp::PhysicsConvexPolygon::resetBounds()
 {
-	FloatRect bounds = shape.getGlobalBounds();
-	body.getBounds().setSize(Vector2f(bounds.width, bounds.height));
+	FloatRect bounds = CenteredConvexShape::getGlobalBounds();
+	PhysicsBodyT<CircleBounds>::getBounds().setSize(Vector2f(bounds.width, bounds.height));
 	
 }
 
 void sfp::PhysicsConvexPolygon::setPoint(int ptIdx, Vector2f value)
 {
-	shape.setPoint(ptIdx, value);
+	CenteredConvexShape::setPoint(ptIdx, value);
 	resetBounds();
 }

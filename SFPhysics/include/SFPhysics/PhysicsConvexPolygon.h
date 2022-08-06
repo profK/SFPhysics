@@ -1,11 +1,11 @@
 #pragma once
-#include "PhysicsShape.h"
+#include "PhysicsShapeT.h"
 #include "CircleBounds.h"
 #include "CenteredConvexShape.h"
 
 namespace sfp {
 	class PhysicsConvexPolygon :
-		public PhysicsShape<CenteredConvexShape, CircleBounds>
+		public PhysicsShapeT<CenteredConvexShape, CircleBounds>
 	{
 	
 	public:
