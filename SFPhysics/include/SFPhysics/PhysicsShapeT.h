@@ -59,7 +59,7 @@ namespace sfp {
 
 	template<class ShapeClass, class BoundsClass>
 	inline PhysicsShapeT<ShapeClass, BoundsClass>::PhysicsShapeT(const PhysicsShapeT < ShapeClass,
-		BoundsClass> &other)
+		BoundsClass> &other): ShapeClass(other),PhysicsBodyT<BoundsClass>(other)
 	{
 		
 		PhysicsBodyT<BoundsClass>::getBounds().onMove = [this](Vector2f pos) {
