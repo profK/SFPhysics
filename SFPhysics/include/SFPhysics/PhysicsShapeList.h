@@ -1,73 +1,77 @@
 #pragma once
 #include <list>
 #include <iterator>
+#include "PhysicsShape.h"
 
 using namespace std;
+namespace sfp {
 
-template<class PhysicsShapeClass>
-class PhysicsShapeList
-{
 
-	using ListType = list<PhysicsShapeClass*>;
-	using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShapeClass*>>>;
+	class PhysicsShapeList
+	{
 
-	
-private:
-	ListType list;
-	ListType removalList;
-public:
+		using ListType = list<PhysicsShape*>;
+		using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShape*>>>;
 
-	using iterator_category = std::forward_iterator_tag;
-	using difference_type = std::ptrdiff_t;
-	using value_type = PhysicsShapeClass;
-	using pointer = PhysicsShapeClass*;  // or also value_type*
-	using reference = PhysicsShapeClass&;  // or also value_type&
 
-	struct iterator   {
-		ListIter lIter;
-		iterator(ListIter iter) { lIter = iter; }
+	private:
+		ListType list;
+		ListType removalList;
+	public:
 
-		reference operator*() const { return **lIter; }
-		pointer operator->() { return lIter.operator->(); }
+		using iterator_category = std::forward_iterator_tag;
+		using difference_type = std::ptrdiff_t;
+		using value_type = PhysicsShape;
+		using pointer = PhysicsShape**;  // or also value_type*
+		using reference = PhysicsShape&;  // or also value_type&
 
-		// Prefix increment
-		iterator& operator++() {lIter++; return *this; }
+		struct iterator {
+			ListIter lIter;
+			iterator(ListIter iter) { lIter = iter; }
 
-		// Postfix increment
-		iterator operator++(int) { iterator tmp = *this; ++lIter; return tmp; }
+			reference operator*() const { return **lIter; }
+			pointer operator->() { return lIter.operator->(); }
 
-		friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
-		friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
+			// Prefix increment
+			iterator& operator++() { lIter++; return *this; }
 
-		
-	};
+			// Postfix increment
+			iterator operator++(int) { iterator tmp = *this; ++lIter; return tmp; }
 
-	PhysicsShapeClass& Create() {
-		PhysicsShapeClass* ptr = new PhysicsShapeClass();
-		list.push_back(ptr);
-		return *ptr;
-	};
-	void QueueRemove(PhysicsShapeClass& element) {
-		removalList.push_back(&element);
-	}
+			friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
+			friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
 
-	void Remove(PhysicsShapeClass& element) {
-		QueueRemove(element);
-	}
 
-	void DoRemovals() {
-		for (auto element : removalList) {
-			list.remove(element);
-			delete element;
+		};
+
+		template<class PhysicsShapeClass>
+		PhysicsShape& Create() {
+			PhysicsShape* ptr = new PhysicsShapeClass();
+			list.push_back(ptr);
+			return *ptr;
+		};
+		void QueueRemove(PhysicsShape& element) {
+			removalList.push_back(&element);
 		}
-		removalList.clear();
-	}
-	
-	iterator begin()  {
-		return iterator(list.begin());
-	}
-	iterator end()  {
-		return iterator(list.end());
-	}
-};
+
+		void Remove(PhysicsShape& element) {
+			QueueRemove(element);
+		}
+
+		void DoRemovals() {
+			for (auto element : removalList) {
+				list.remove(element);
+				delete element;
+			}
+			removalList.clear();
+		}
+
+		iterator begin() {
+			return iterator(list.begin());
+		}
+		iterator end() {
+			return iterator(list.end());
+		}
+	};
+}
 
