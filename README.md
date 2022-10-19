@@ -36,6 +36,15 @@ https://github.com/profK/Breakout2
 * Documentation
   
 ## RELEASE NOTES
+Version 2.0.0 has been released.
+Internally a number of changes have been made:
+(1) The bounds of a PhysicsBody is now determined when the body is created and may not be changed, although the fields of the bounds
+may be reset.  This eliminated issues with copying such that PhysicsShapes may now be copied freely and thus used (carefully) with stl collection types.
+(2) Inheritance by field composition has been replaced with pure inheritance by sub classing.  The practical result of this is the the PhysicsBodies returned by the collision callback can be upcast to retreieve their PhysicsShape.
+(3) In multiple places templated classed have been replaced by classname<T> (eg PhysicsShapeT).  The old name (eg PhysicsShape) now defines an abstract superclass that can be used like an "interface" in C# ort Java.  
+
+The API has one major chnage, which is that PhysicsShapeList can now hold a mix of PhysicsShape instances (PhysicsCricle, PhysicsSprite) etc. The Create call to make a new shape on the list is now Create<T> where T can be any subclass of PhysicsShape.
+
 Version 1.2.0 has been released.  It is feature complete and passses all the tests I have for it.  The largest addition is the
 collision pruning based on motion.
 There still may be bugs.  And documentation is still forthcoming.
