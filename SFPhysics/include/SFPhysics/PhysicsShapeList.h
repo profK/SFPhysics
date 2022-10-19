@@ -6,72 +6,77 @@
 using namespace std;
 namespace sfp {
 
+    template<class T>
+    class PhysicsShapeList
+    {
 
-	class PhysicsShapeList
-	{
-
-		using ListType = list<PhysicsShape*>;
-		using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShape*>>>;
-
-
-	private:
-		ListType list;
-		ListType removalList;
-	public:
-
-		using iterator_category = std::forward_iterator_tag;
-		using difference_type = std::ptrdiff_t;
-		using value_type = PhysicsShape;
-		using pointer = PhysicsShape**;  // or also value_type*
-		using reference = PhysicsShape&;  // or also value_type&
-
-		struct iterator {
-			ListIter lIter;
-			iterator(ListIter iter) { lIter = iter; }
-
-			reference operator*() const { return **lIter; }
-			pointer operator->() { return lIter.operator->(); }
-
-			// Prefix increment
-			iterator& operator++() { lIter++; return *this; }
-
-			// Postfix increment
-			iterator operator++(int) { iterator tmp = *this; ++lIter; return tmp; }
-
-			friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
-			friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
+        using ListType = list<PhysicsShape*>;
+        using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShape*>>>;
 
 
-		};
+    private:
+        ListType list;
+        ListType removalList;
+    public:
 
-		template<class PhysicsShapeClass>
-		PhysicsShape& Create() {
-			PhysicsShape* ptr = new PhysicsShapeClass();
-			list.push_back(ptr);
-			return *ptr;
-		};
-		void QueueRemove(PhysicsShape& element) {
-			removalList.push_back(&element);
-		}
+        using iterator_category = std::forward_iterator_tag;
+        using difference_type = std::ptrdiff_t;
+        using value_type = PhysicsShape;
+        using pointer = PhysicsShape**;  // or also value_type*
+        using reference = PhysicsShape&;  // or also value_type&
 
-		void Remove(PhysicsShape& element) {
-			QueueRemove(element);
-		}
+        struct iterator {
+            ListIter lIter;
+            iterator(ListIter iter) { lIter = iter; }
 
-		void DoRemovals() {
-			for (auto element : removalList) {
-				list.remove(element);
-				delete element;
-			}
-			removalList.clear();
-		}
+            reference operator*() const { return **lIter; }
+            pointer operator->() { return lIter.operator->(); }
 
-		iterator begin() {
-			return iterator(list.begin());
-		}
-		iterator end() {
-			return iterator(list.end());
-		}
-	};
+            // Prefix increment
+            iterator& operator++() { lIter++; return *this; }
+
+            // Postfix increment
+            iterator operator++(int) { iterator tmp = *this; ++lIter; return tmp; }
+
+            friend bool operator== (const iterator& a, const iterator& b) { return a.lIter == b.lIter; };
+            friend bool operator!= (const iterator& a, const iterator& b) { return a.lIter != b.lIter; };
+
+
+        };
+
+
+        T& Create() {
+            T* ptr = new T();
+            list.push_back(ptr);
+            return (T&)*ptr;
+        };
+        void QueueRemove(PhysicsShape& element) {
+            removalList.push_back(&element);
+        }
+
+        void Remove(PhysicsShape& element) {
+            QueueRemove(element);
+        }
+
+        void DoRemovals() {
+            for (auto element : removalList) {
+                list.remove(element);
+                delete element;
+            }
+            removalList.clear();
+        }
+
+        iterator begin() {
+            return iterator(list.begin());
+        }
+        iterator end() {
+            return iterator(list.end());
+        }
+
+
+    };
 }
+
+
+
 

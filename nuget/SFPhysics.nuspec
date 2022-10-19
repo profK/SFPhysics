@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SFPhysics</id>
-    <version>1.7.1</version>
+    <version>2.0.0</version>
     <title>SFPhysics</title>
     <authors>Jeffrey Kesselman</authors>
     <owners>Jeffrey Kesselman</owners>
@@ -11,11 +11,12 @@
       It makes no attempt to detect or handle inter-frame collision misses.  It is
       however perfectly suitable for most classic 2D games.
 
-      Added a layer of indirection to physics shape callbacks, 
-      exposed as onCollision and onUpdate lambda hooks.
+      Version 2.0.0 has been released. Internally a number of changes have been made: 
+      (1) The bounds of a PhysicsBody is now determined when the body is created and may not be changed, although the fields of the bounds may be reset. This eliminated issues with copying such that PhysicsShapes may now be copied freely and thus used (carefully) with stl collection types. 
+      (2) Inheritance by field composition has been replaced with pure inheritance by sub classing. The practical result of this is the the PhysicsBodies returned by the collision callback can be upcast to retreieve their PhysicsShape. 
+      (3) In multiple places templated classed have been replaced by classname (eg PhysicsShapeT). The old name (eg PhysicsShape) now defines an abstract superclass that can be used like an "interface" in C# ort Java.
 
-      Made PhysicsBody comparable with == and !=.  Comparsion
-      is by memory address.
+The API has one major change, which is that PhysicsShapeList can now hold a mix of PhysicsShape instances (PhysicsCricle, PhysicsSprite) etc. The Create call to make a new shape on the list is now Create where T can be any subclass of PhysicsShape.
    
       
       Basic documentation is at https://github.com/profK/SFPhysics.
