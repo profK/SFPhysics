@@ -68,20 +68,16 @@ namespace MSTests
 
 		TEST_METHOD(ListTest)
 		{
-			PhysicsShapeList<PhysicsCircle> circles;
+			list<PhysicsCircle> circles;
 			World world(Vector2f(0, 1));
 			for (int i(0); i < 4; i++) {
-				PhysicsCircle& c(circles.Create());
-				c.setSize(Vector2f(300, 30));
+				PhysicsCircle c;
+				c.setSize(Vector2f(30, 30));
 				c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
-				world.AddPhysicsBody(c.getBody());
+				circles.push_back(c);
+				world.AddPhysicsBody(circles.back());
 			}
-			PhysicsCircle& c(circles.Create());
-			c.setSize(Vector2f(300, 30));
-			c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
-			world.AddPhysicsBody(c.getBody());
-			world.RemovePhysicsBody(c.getBody());
-			circles.Remove(c);
+			
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)){	
@@ -94,13 +90,13 @@ namespace MSTests
 				window.clear(Color::Black);
 				world.UpdatePhysics(deltaMs);
 				last = current;
-				//world.VisualizeAllBounds(window);
-				//Font fnt;
-				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
-				//Text text("Push space to continue...", fnt);
-				//text.setPosition(0, 500);
+				world.VisualizeAllBounds(window);
+				Font fnt;
+				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
+				Text text("Push space to continue...", fnt);
+				text.setPosition(0, 500);
 				for (auto circle : circles)
-					window.draw(circle.getShape());
+					window.draw(circle);
 				window.display();
 			}
 
@@ -110,16 +106,17 @@ namespace MSTests
 		TEST_METHOD(VisualTest)
 		{
 			World world(Vector2f(0, 1));
-			CircleBounds cbounds(Vector2f(100, 100), 50);
-			PhysicsBody b1(cbounds);
+			
+			PhysicsBodyT<CircleBounds> b1;
+			b1.getBounds().setSize(Vector2f(10, 10));
 			world.AddPhysicsBody(b1);
-			AABB rBounds1(Vector2f(0, 0), Vector2f(40, 120));
-			PhysicsBody pb2;
-			pb2.setBounds(rBounds1);
+			PhysicsBodyT<AABB> pb2;
+			pb2.getBounds().setSize(Vector2f(10, 10));
+			pb2.setPosition(Vector2f(400, 200));
 			world.AddPhysicsBody(pb2);
-			AABB rBounds2(Vector2f(0, 550), Vector2f(800, 600));
-			PhysicsBody pb3;
-			pb3.setBounds(rBounds2);
+			PhysicsBodyT<AABB> pb3;
+			pb3.getBounds().setSize(Vector2f(800, 20));
+			pb3.setPosition(Vector2f(400, 590));
 			pb3.setStatic(true);
 			world.AddPhysicsBody(pb3);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
@@ -151,8 +148,8 @@ namespace MSTests
 			PhysicsCircle circle;
 			circle.setCenter(Vector2f(100, 100));
 			circle.setSize(Vector2f(50, 50));
-			circle.getBody().setVelocity(Vector2f(0, -1));
-			world.AddPhysicsBody(circle.getBody());
+			circle.setVelocity(Vector2f(0, -1));
+			world.AddPhysicsBody(circle);
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
 				window.clear(Color::Black);
@@ -169,7 +166,7 @@ namespace MSTests
 				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				//Text text("Push space to continue...", fnt);
 				//text.setPosition(0, 500);
-				window.draw(circle.getShape());
+				window.draw(circle);
 				window.display();
 			}
 		}
@@ -182,29 +179,29 @@ namespace MSTests
 			PhysicsCircle circle;
 			circle.setCenter(Vector2f(100, 100));
 			circle.setSize(Vector2f(50, 50));
-			world.AddPhysicsBody(circle.getBody());
+			world.AddPhysicsBody(circle);
 			PhysicsRectangle fallingRect;
 			fallingRect.setCenter(Vector2f(20, 60));
 			fallingRect.setSize(Vector2f(40, 120));
-			world.AddPhysicsBody(fallingRect.getBody());
+			world.AddPhysicsBody(fallingRect);
 			PhysicsRectangle floor;
 			floor.setCenter(Vector2f(400, 575));
 			floor.setSize(Vector2f(800, 50));
-			floor.getBody().setStatic(true);
-			world.AddPhysicsBody(floor.getBody());
+			floor.setStatic(true);
+			world.AddPhysicsBody(floor);
 			Texture landerTex;
-			//Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
+			Assert::IsTrue(landerTex.loadFromFile("../../smiley.png"));
 			PhysicsSprite lander;
 			lander.setCenter(Vector2f(600, 20));
-			world.AddPhysicsBody(lander.getBody());
+			world.AddPhysicsBody(lander);
 			lander.setTexture(landerTex);
 			PhysicsConvexPolygon ship;
-			ship.getShape().setPointCount(3);
+			ship.setPointCount(3);
 			ship.setPoint(0, Vector2f(-25, 25));
 			ship.setPoint(1, Vector2f(0, -30));
 			ship.setPoint(2, Vector2f(25, 25));
 			ship.setCenter(Vector2f(400, 50));
-			world.AddPhysicsBody(ship.getBody());
+			world.AddPhysicsBody(ship);
 			RenderWindow window(VideoMode(800, 600), "Test Window");
 			system_clock::time_point last = system_clock::now();
 			while (!Keyboard::isKeyPressed(Keyboard::Space)) {
@@ -222,12 +219,12 @@ namespace MSTests
 				//Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				//Text text("Push space to continue...", fnt);
 				//text.setPosition(0, 500);
-				window.draw(circle.getShape());
-				window.draw(fallingRect.getShape());
-				window.draw(floor.getShape());
+				window.draw(circle);
+				window.draw(fallingRect);
+				window.draw(floor);
 				//window.draw(text);
-				window.draw(lander.getShape());
-				window.draw(ship.getShape());
+				window.draw(lander);
+				window.draw(ship);
 				window.display();
 			}
 		}

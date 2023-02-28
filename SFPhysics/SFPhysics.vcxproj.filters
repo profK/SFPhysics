@@ -75,13 +75,19 @@
     <ClInclude Include="include\SFPhysics\PhysicsShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsConvexPolygon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CenteredConvexShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\SFPhysics\PhysicsShapeList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsBodyT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsShapeT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsConvexPolygon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

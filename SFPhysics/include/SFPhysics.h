@@ -7,6 +7,7 @@
 #include "SFPhysics/CenteredShape.h"
 #include "SFPhysics/CircleBounds.h"
 #include "SFPhysics/PhysicsBody.h"
+#include "SFPhysics/PhysicsBodyT.h"
 #include "SFPhysics/PhysicsBodyCollisionResult.h"
 #include "SFPhysics/PhysicsCircle.h"
 #include "SFPhysics/PhysicsRectangle.h"

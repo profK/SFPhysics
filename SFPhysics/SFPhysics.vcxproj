@@ -178,14 +178,16 @@
     <ClInclude Include="include\SFPhysics\pch.h" />
     <ClInclude Include="include\SFPhysics\PhysicsBody.h" />
     <ClInclude Include="include\SFPhysics\PhysicsBodyCollisionResult.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsBodyT.h" />
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsConvexPolygon.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShape.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShapeList.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsShapeT.h" />
     <ClInclude Include="include\SFPhysics\PhysicsSprite.h" />
     <ClInclude Include="include\SFPhysics\World.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PhysicsConvexPolygon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
