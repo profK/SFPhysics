@@ -10,8 +10,8 @@ namespace sfp {
     class PhysicsShapeList
     {
 
-        using ListType = list<PhysicsShape*>;
-        using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<PhysicsShape*>>>;
+        using ListType = list<T*>;
+        using ListIter = std::_List_iterator<std::_List_val<std::_List_simple_types<T*>>>;
 
 
     private:
@@ -21,9 +21,9 @@ namespace sfp {
 
         using iterator_category = std::forward_iterator_tag;
         using difference_type = std::ptrdiff_t;
-        using value_type = PhysicsShape;
-        using pointer = PhysicsShape**;  // or also value_type*
-        using reference = PhysicsShape&;  // or also value_type&
+        using value_type = T*;
+        using pointer = T**;  // or also value_type*
+        using reference = T&;  // or also value_type&
 
         struct iterator {
             ListIter lIter;
@@ -50,11 +50,11 @@ namespace sfp {
             list.push_back(ptr);
             return (T&)*ptr;
         };
-        void QueueRemove(PhysicsShape& element) {
+        void QueueRemove(T& element) {
             removalList.push_back(&element);
         }
 
-        void Remove(PhysicsShape& element) {
+        void Remove(T& element) {
             QueueRemove(element);
         }
 

@@ -14,12 +14,13 @@ namespace sfp {
 		list<PhysicsBody*> objects; // becomes ptrs internally but never exposed
 		bool ignoreMovement;
 		list<PhysicsBody*> removalList;
+		long unsigned deltaAccumulator = 0;
 	public:
 		World(Vector2f gravity);
 
 		void AddPhysicsBody(PhysicsBody& obj);
 		void RemovePhysicsBody(PhysicsBody& obj);
-		void UpdatePhysics(unsigned long deltaMilliseconds);
+		void UpdatePhysics(unsigned long deltaMilliseconds, unsigned long msPerTick = 0);
 		void VisualizeAllBounds(RenderWindow& window);
 		void setIgnoreMovement(bool ignore = true);
 	};

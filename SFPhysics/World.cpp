@@ -63,32 +63,40 @@ void sfp::World::RemovePhysicsBody(PhysicsBody& obj)
 	removalList.push_back(&obj);
 }
 
-void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds)
+void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds,unsigned long msPerTick)
 {
 	// cleanup first
 	for (auto el : removalList) {
 		objects.remove(el);
 	}
 	removalList.clear();
-	for (auto obj : objects) {
-		obj->applyImpulse(gravity * (float)deltaMilliseconds/1000.0f);
-		// do collision, very stupid right now. long run should not check 
-		// objecst that havent moved
-		for (auto obj2 : objects) {
-			if ((obj != obj2)&&(ignoreMovement||obj->hasMoved()||obj2->hasMoved())) {
-				PhysicsBodyCollisionResult collision =
-					obj->collideWith(*obj2);
-				if (collision.hasCollided) {
-					if (collision.object1.onCollision) {
-						collision.object1.onCollision(collision);
+	//check for single pass
+	if (msPerTick == 0) {
+		msPerTick = deltaMilliseconds;
+	}
+	deltaAccumulator += deltaMilliseconds;
+	while (deltaAccumulator >= msPerTick) {
+		for (auto obj : objects) {
+			obj->applyImpulse(gravity * (float)msPerTick / 1000.0f);
+			// do collision, very stupid right now. long run should not check 
+			// objecst that havent moved
+			for (auto obj2 : objects) {
+				if ((obj != obj2) && (ignoreMovement || obj->hasMoved() || obj2->hasMoved())) {
+					PhysicsBodyCollisionResult collision =
+						obj->collideWith(*obj2);
+					if (collision.hasCollided) {
+						if (collision.object1.onCollision) {
+							collision.object1.onCollision(collision);
+						}
+						ResolveCollision(collision);
 					}
-					ResolveCollision(collision);
 				}
 			}
 		}
-	}
-	for (auto obj : objects) {
-		obj->update(deltaMilliseconds);
+		for (auto obj : objects) {
+			obj->update(msPerTick);
+		}
+		deltaAccumulator -= msPerTick;
 	}
 }
 

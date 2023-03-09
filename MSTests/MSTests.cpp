@@ -66,16 +66,83 @@ namespace MSTests
 
 		}
 
+		TEST_METHOD(BounceTest) 
+		{
+			RenderWindow window(VideoMode(800, 600), "Bounce");
+			World world(Vector2f(0, 1));
+			PhysicsCircle ball;
+			ball.setCenter(Vector2f(400, 300));
+			ball.setRadius(20);
+			world.AddPhysicsBody(ball);
+
+			PhysicsRectangle floor;
+			floor.setSize(Vector2f(800, 20));
+			floor.setCenter(Vector2f(400, 590));
+			floor.setStatic(true);
+			world.AddPhysicsBody(floor);
+
+			Clock clock;
+			Time lastTime(clock.getElapsedTime());
+			Time runTime = clock.getElapsedTime() + sf::seconds(5);
+			while (clock.getElapsedTime()<runTime) {
+				// calculate MS since last frame
+				Time currentTime(clock.getElapsedTime());
+				Time deltaTime(currentTime - lastTime);
+				int deltaTimeMS(deltaTime.asMilliseconds());
+				if (deltaTimeMS > 0) {
+					world.UpdatePhysics(deltaTimeMS);
+					lastTime = currentTime;
+				}
+				window.clear(Color(0, 0, 0));
+				window.draw(ball);
+				window.draw(floor);
+				window.display();
+			}
+		}
+
+		TEST_METHOD(SubdevidedBounceTest)
+		{
+			RenderWindow window(VideoMode(800, 600), "Bounce with 1ms phsyics tick");
+			World world(Vector2f(0, 1));
+			PhysicsCircle ball;
+			ball.setCenter(Vector2f(400, 300));
+			ball.setRadius(20);
+			world.AddPhysicsBody(ball);
+
+			PhysicsRectangle floor;
+			floor.setSize(Vector2f(800, 20));
+			floor.setCenter(Vector2f(400, 590));
+			floor.setStatic(true);
+			world.AddPhysicsBody(floor);
+
+			Clock clock;
+			Time lastTime(clock.getElapsedTime());
+			Time runTime = clock.getElapsedTime() + sf::seconds(5);
+			while (clock.getElapsedTime() < runTime) {
+				// calculate MS since last frame
+				Time currentTime(clock.getElapsedTime());
+				Time deltaTime(currentTime - lastTime);
+				int deltaTimeMS(deltaTime.asMilliseconds());
+				if (deltaTimeMS > 0) {
+					world.UpdatePhysics(deltaTimeMS);
+					lastTime = currentTime;
+				}
+				window.clear(Color(0, 0, 0));
+				window.draw(ball);
+				window.draw(floor);
+				window.display();
+			}
+		}
+
 		TEST_METHOD(ListTest)
 		{
-			list<PhysicsCircle> circles;
+			PhysicsShapeList<PhysicsCircle> circles;
 			World world(Vector2f(0, 1));
 			for (int i(0); i < 4; i++) {
-				PhysicsCircle c;
+				PhysicsCircle& c = circles.Create();
 				c.setSize(Vector2f(30, 30));
 				c.setCenter(Vector2f(rand() % 600 + 100, rand() % 400));
-				circles.push_back(c);
-				world.AddPhysicsBody(circles.back());
+				world.AddPhysicsBody(c);
 			}
 			
 			RenderWindow window(VideoMode(800, 600), "Test Window");
@@ -90,7 +157,7 @@ namespace MSTests
 				window.clear(Color::Black);
 				world.UpdatePhysics(deltaMs);
 				last = current;
-				world.VisualizeAllBounds(window);
+				//world.VisualizeAllBounds(window);
 				Font fnt;
 				Assert::IsTrue(fnt.loadFromFile("../../arial.ttf"));
 				Text text("Push space to continue...", fnt);
