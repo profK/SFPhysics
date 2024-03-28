@@ -27,15 +27,13 @@ Texture& sfp::CenteredSprite::getImage()
 
 void CenteredSprite::setCenter(Vector2f center)
 {
-    IntRect sz = getTextureRect();
-    setPosition(
-        Vector2f(center.x - (sz.width / 2), center.y - (sz.height / 2)));
+    Vector2f sz = getSize();
+    setPosition(Vector2f(center.x - (sz.x / 2), center.y - (sz.y / 2)));
 }
 
 Vector2f CenteredSprite::getCenter()
 {
-    IntRect sz = getTextureRect();
-    Vector2f szvect = Vector2f(sz.width, sz.height);
+    Vector2f szvect = getSize();
     Vector2f pos = getPosition();
     return Vector2f(pos + (szvect / 2.0f));
 }

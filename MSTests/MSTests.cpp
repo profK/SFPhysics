@@ -238,7 +238,76 @@ namespace MSTests
 			}
 		}
 
+		TEST_METHOD(SpriteResizeTest)
+		{
 
+			const int WINDOW_WIDTH = 800;
+			const int WINDOW_HEIGHT = 600;
+			RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Sprite Resize Bounce");
+			World world(Vector2f(0, 1));
+
+			Texture texture;
+			Assert::IsTrue(texture.loadFromFile("../../smiley.png"));
+
+			auto createShape = [&world, &texture](PhysicsSprite& sprite, float size, Vector2f center)
+				{
+					sprite.setTexture(texture);
+					sprite.setSize({ size, size });
+					sprite.setCenter(center);
+					world.AddPhysicsBody(sprite);
+				};
+
+
+			PhysicsShapeList<PhysicsSprite> list;
+			const int COUNT = 3;
+			float spacing = WINDOW_WIDTH / COUNT;
+			float half_space = spacing / 2.0f;
+			for (int i = 0; i < COUNT; i++)
+			{
+				PhysicsSprite& sprite = list.Create();
+				float x = spacing * i + half_space;
+				createShape(sprite, (i + 1) * 50, {x, WINDOW_HEIGHT / 2.0f});
+			}
+
+			PhysicsRectangle floor;
+			floor.setSize(Vector2f(800, 20));
+			floor.setCenter(Vector2f(400, 590));
+			floor.setStatic(true);
+			world.AddPhysicsBody(floor);
+
+			Clock clock;
+			Time lastTime(clock.getElapsedTime());
+			Time runTime = clock.getElapsedTime() + sf::seconds(10);
+			while (clock.getElapsedTime() < runTime) {
+
+				// calculate MS since last frame
+				Time currentTime(clock.getElapsedTime());
+				Time deltaTime(currentTime - lastTime);
+				int deltaTimeMS(deltaTime.asMilliseconds());
+				if (deltaTimeMS > 0) {
+					world.UpdatePhysics(deltaTimeMS);
+					lastTime = currentTime;
+				}
+				window.clear(Color(0, 0, 0));
+
+				for (auto sprite : list)
+				{
+					window.draw(sprite);
+				}
+				window.draw(floor);
+				world.VisualizeAllBounds(window);
+				window.display();
+
+				Event ev;
+				if (window.pollEvent(ev))
+				{
+					if (ev.key.code == Keyboard::Space)
+					{
+						break;
+					}
+				}
+			}
+		}
 
 		TEST_METHOD(SFMLBinding)
 		{

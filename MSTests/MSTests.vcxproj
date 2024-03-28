@@ -104,11 +104,11 @@
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
-      <Command>copy $(ProjectDir)arial.ttf $(OutputPath)</Command>
+      <Command>copy "$(ProjectDir)arial.ttf" "$(OutputPath)"</Command>
     </CustomBuildStep>
     <PostBuildEvent>
       <Message>copy font</Message>
-      <Command>copy $(ProjectDir)arial.ttf $(OutputPath)</Command>
+      <Command>copy "$(ProjectDir)arial.ttf" "$(OutputPath)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -183,9 +183,6 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SFPhysics\SFPhysics.vcxproj">
       <Project>{5aae9625-7731-4380-a52c-e43ce8d02f99}</Project>
     </ProjectReference>
@@ -195,6 +192,9 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
       <FileType>Font</FileType>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
