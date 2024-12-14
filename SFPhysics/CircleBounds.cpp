@@ -107,7 +107,7 @@ float sfp::CircleBounds::getRadius()
 
 void sfp::CircleBounds::setSize(Vector2f extents)
 {
-    setRadius(max(extents.x, extents.y)/2);
+    setRadius(max(extents.x, extents.y));
 }
 
 Vector2f sfp::CircleBounds::getSize()

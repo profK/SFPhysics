@@ -10,7 +10,7 @@ using namespace sfp;
 
 sfp::PhysicsBody::PhysicsBody():
 	restitution(1.0),mass(1.0),isStatic(false),
-	velocity(Vector2f(0,0))
+	velocity(Vector2f(0,0)), layer(0)
 {
 }
 
@@ -122,6 +122,16 @@ void sfp::PhysicsBody::setMoved(bool moved)
 bool sfp::PhysicsBody::hasMoved()
 {
 	return moved;
+}
+
+void sfp::PhysicsBody::setLayer(unsigned int layer)
+{
+	this->layer = layer;
+}
+
+unsigned int sfp::PhysicsBody::getLayer()
+{
+	return layer;
 }
 
 

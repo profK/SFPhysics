@@ -181,6 +181,7 @@
     <ClInclude Include="include\SFPhysics\PhysicsBodyT.h" />
     <ClInclude Include="include\SFPhysics\PhysicsCircle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsConvexPolygon.h" />
+    <ClInclude Include="include\SFPhysics\PhysicsLayer.h" />
     <ClInclude Include="include\SFPhysics\PhysicsRectangle.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShape.h" />
     <ClInclude Include="include\SFPhysics\PhysicsShapeList.h" />
@@ -209,6 +210,7 @@
     <ClCompile Include="PhysicsBodyCollisionResult.cpp" />
     <ClCompile Include="PhysicsCircle.cpp" />
     <ClCompile Include="PhysicsConvexPolygon.cpp" />
+    <ClCompile Include="PhysicsLayer.cpp" />
     <ClCompile Include="PhysicsRectangle.cpp" />
     <ClCompile Include="PhysicsShape.cpp" />
     <ClCompile Include="PhysicsShapeList.cpp" />

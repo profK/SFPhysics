@@ -81,7 +81,7 @@ void sfp::World::UpdatePhysics(unsigned long deltaMilliseconds,unsigned long msP
 			// do collision, very stupid right now. long run should not check 
 			// objecst that havent moved
 			for (auto obj2 : objects) {
-				if ((obj != obj2) && (ignoreMovement || obj->hasMoved() || obj2->hasMoved())) {
+				if ((obj != obj2) && (ignoreMovement || obj->hasMoved() || obj2->hasMoved()) && HasCollision(obj->getLayer(), obj2->getLayer())) {
 					PhysicsBodyCollisionResult collision =
 						obj->collideWith(*obj2);
 					if (collision.hasCollided) {
@@ -110,4 +110,55 @@ void sfp::World::VisualizeAllBounds(RenderWindow& window)
 void sfp::World::setIgnoreMovement(bool  ignore)
 {
 	ignoreMovement = ignore;
+}
+
+void sfp::World::ExcludeCollision(unsigned int layer1, unsigned int layer2)
+{
+	// Use the lower layer number. This is to prevent overlap.
+	int primaryLayer = layer1 < layer2 ? layer1 : layer2;
+	int otherLayer = layer1 < layer2 ? layer2 : layer1;
+
+	for (auto layer : layers)
+	{
+		if (layer.Layer == primaryLayer)
+		{
+			layer.AddExcludedLayer(otherLayer);
+			return;
+		}
+	}
+
+	PhysicsLayer layer;
+	layer.Layer = layer1;
+	layer.AddExcludedLayer(layer2);
+	layers.push_back(layer);
+}
+
+void sfp::World::IncludeCollision(unsigned int layer1, unsigned int layer2)
+{
+	// Use the lower layer number. This is to prevent overlap.
+	int primaryLayer = layer1 < layer2 ? layer1 : layer2;
+	int otherLayer = layer1 < layer2 ? layer2 : layer1;
+
+	for (auto layer : layers)
+	{
+		if (layer.Layer == primaryLayer)
+		{
+			layer.RemoveExcludedLayer(otherLayer);
+			return;
+		}
+	}
+}
+
+bool sfp::World::HasCollision(unsigned int layer1, unsigned int layer2)
+{
+	// Use the lower layer number. This is to prevent overlap.
+	int primaryLayer = layer1 < layer2 ? layer1 : layer2;
+	int otherLayer = layer1 < layer2 ? layer2 : layer1;
+
+	for (auto layer : layers)
+	{
+		if (layer.Layer == primaryLayer)
+			return !layer.ExcludesLayer(otherLayer);
+	}
+	return true;
 }

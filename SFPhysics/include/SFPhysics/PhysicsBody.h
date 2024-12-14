@@ -16,11 +16,11 @@ namespace sfp {
 		bool isStatic;
 		Vector2f velocity;
 		bool moved;
-	
+		unsigned int layer;
 	public:
 		PhysicsBody();
 		PhysicsBody(Bounds& bounds, bool isStatic = false,
-			float restitution=1.0f,float mass=1.0f);
+			float restitution=1.0f,float mass=1.0f, int layer = 0);
 		void applyImpulse(Vector2f impulse);
 		void update(unsigned int deltaMillisconds);
 		void setPosition(Vector2f center);
@@ -39,6 +39,16 @@ namespace sfp {
 		PhysicsBodyCollisionResult collideWith(PhysicsBody& other);
 		void setMoved(bool moved = false);
 		bool hasMoved();
+		/// <summary>
+		/// Sets the collision layer to be set to this object. Default is 0.
+		/// </summary>
+		/// <param name="layer">The layer to use.</param>
+		void setLayer(unsigned int layer);
+		/// <summary>
+		/// Gets the current layer associated with this object. Default is 0.
+		/// </summary>
+		/// <returns>The layer this object is associated with.</returns>
+		unsigned int getLayer();
 
 		bool operator == (const PhysicsBody& other) {
 			return this == &other;

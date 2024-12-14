@@ -90,6 +90,9 @@
     <ClInclude Include="include\SFPhysics\PhysicsConvexPolygon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\SFPhysics\PhysicsLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFPhysics.cpp">
@@ -150,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsShapeList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

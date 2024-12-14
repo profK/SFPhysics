@@ -309,6 +309,80 @@ namespace MSTests
 			}
 		}
 
+		/// <summary>
+		/// Spawns two balls and platforms, each on different layers. One of the balls cannot interact with one of the platforms.
+		/// </summary>
+		TEST_METHOD(LayerInteractionTest)
+		{
+			RenderWindow window(VideoMode(800, 600), "Set velocity test");
+			World world(Vector2f(0, 1));
+			PhysicsCircle circle1;
+			circle1.setCenter(Vector2f(300, 100));
+			circle1.setSize(Vector2f(50, 50));
+			circle1.setLayer(0);
+			circle1.setFillColor(sf::Color::Red);
+			world.AddPhysicsBody(circle1);
+
+			PhysicsCircle circle2;
+			circle2.setCenter(Vector2f(500, 100));
+			circle2.setSize(Vector2f(100, 100));
+			circle2.setLayer(1);
+			circle2.setFillColor(sf::Color::Green);
+			world.AddPhysicsBody(circle2);
+
+
+			PhysicsRectangle floor1;
+			floor1.setSize(Vector2f(800, 20));
+			floor1.setCenter(Vector2f(400, 590));
+			floor1.setStatic(true);
+			floor1.setLayer(0);
+			world.AddPhysicsBody(floor1);
+
+			PhysicsRectangle floor2;
+			floor2.setSize(Vector2f(800, 20));
+			floor2.setCenter(Vector2f(400, 400));
+			floor2.setStatic(true);
+			floor2.setLayer(2);
+			floor2.setFillColor(sf::Color::Green);
+			world.AddPhysicsBody(floor2);
+
+			world.ExcludeCollision(1, 2);
+
+			system_clock::time_point last = system_clock::now();
+			
+			Clock clock;
+			Time lastTime(clock.getElapsedTime());
+			Time runTime = clock.getElapsedTime() + sf::seconds(10);
+			while (clock.getElapsedTime() < runTime) {
+
+				// calculate MS since last frame
+				Time currentTime(clock.getElapsedTime());
+				Time deltaTime(currentTime - lastTime);
+				int deltaTimeMS(deltaTime.asMilliseconds());
+				if (deltaTimeMS > 0) {
+					world.UpdatePhysics(deltaTimeMS, 1);
+					lastTime = currentTime;
+				}
+				window.clear(Color(0, 0, 0));
+
+				window.draw(circle1);
+				window.draw(circle2);
+				window.draw(floor1);
+				window.draw(floor2);
+				world.VisualizeAllBounds(window);
+				window.display();
+
+				Event ev;
+				if (window.pollEvent(ev))
+				{
+					if (ev.key.code == Keyboard::Space)
+					{
+						break;
+					}
+				}
+			}
+		}
+
 		TEST_METHOD(SFMLBinding)
 		{
 			World world(Vector2f(0, 1));
