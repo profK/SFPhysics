@@ -37,6 +37,7 @@ namespace MSTests
 			Assert::AreEqual(0.0f, result3.normal.y, L"normal X not 0");
 		};
 
+
 		TEST_METHOD(BoxVBox)
 		{
 			AABB b1(Vector2f(0, 0), Vector2f(10, 10));
@@ -96,6 +97,40 @@ namespace MSTests
 				window.clear(Color(0, 0, 0));
 				window.draw(ball);
 				window.draw(floor);
+				window.display();
+			}
+		}
+
+		TEST_METHOD(BounceTestCirclevCircle)
+		{
+			RenderWindow window(VideoMode(800, 600), "Bounce");
+			World world(Vector2f(0, 1));
+			PhysicsCircle ball;
+			ball.setCenter(Vector2f(400, 300));
+			ball.setRadius(20);
+			world.AddPhysicsBody(ball);
+
+			PhysicsCircle target;
+			target.setCenter(Vector2f(370, 540));
+			target.setRadius(60);
+			target.setStatic(true);
+			world.AddPhysicsBody(target);
+
+			Clock clock;
+			Time lastTime(clock.getElapsedTime());
+			Time runTime = clock.getElapsedTime() + sf::seconds(5);
+			while (clock.getElapsedTime() < runTime) {
+				// calculate MS since last frame
+				Time currentTime(clock.getElapsedTime());
+				Time deltaTime(currentTime - lastTime);
+				int deltaTimeMS(deltaTime.asMilliseconds());
+				if (deltaTimeMS > 0) {
+					world.UpdatePhysics(deltaTimeMS);
+					lastTime = currentTime;
+				}
+				window.clear(Color(0, 0, 0));
+				window.draw(ball);
+				window.draw(target);
 				window.display();
 			}
 		}
