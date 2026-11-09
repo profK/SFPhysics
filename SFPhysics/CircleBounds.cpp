@@ -15,11 +15,14 @@ sfp::CircleBounds::CircleBounds(Vector2f position, float radius):
 {
 }
 
-bool sfp::CircleBounds::intersectsWith(CircleBounds &other)
+bool sfp::CircleBounds::intersectsWith(CircleBounds& other)
 {
-	float r = radius + other.radius;
-	r *= r;
-	return r < (powf(position.x + other.position.x,2) + powf(position.y + other.position.y, 2));
+    float dx = position.x - other.position.x;
+    float dy = position.y - other.position.y;
+
+    float r = radius + other.radius;
+
+    return dx * dx + dy * dy <= r * r;
 }
 
 sfp::BoundsCollisionResult sfp::CircleBounds::collideWith(Bounds& other)
@@ -27,48 +30,51 @@ sfp::BoundsCollisionResult sfp::CircleBounds::collideWith(Bounds& other)
     return reverseCollsionObjects(other.collideWithCircle(*this));
 }
 
-sfp::BoundsCollisionResult sfp::CircleBounds::collideWithCircle(CircleBounds& other)
+
+sfp::BoundsCollisionResult
+sfp::CircleBounds::collideWithCircle(CircleBounds& other)
 {
-    // Setup a couple pointers to each object
     CircleBounds* A = this;
     CircleBounds* B = &other;
-    
 
     // Vector from A to B
     Vector2f n = B->position - A->position;
-    float distSquared = powf(n.x, 2) + powf(n.y, 2);
+
+    float distSquared = n.x * n.x + n.y * n.y;
 
     float r = A->radius + B->radius;
-   
 
-    if (distSquared > pow(r,2)) {
+    // No collision
+    if (distSquared > r * r) {
         return BoundsCollisionResult(*this, other);
     }
 
-    // Circles have collided, now compute manifold
-    float d = sqrt(distSquared); // perform actual sqrt
+    // Circles overlap
+    float d = sqrtf(distSquared);
 
-    // If distance between circles is not zero
-    if (d != 0)
+    if (d != 0.0f)
     {
-        // Distance is difference between radius and distance
         float penetration = r - d;
 
-        // Utilize our d since we performed sqrt on it already within Length( )
-        // Points from A to B, and is a unit vector
-        Vector2f normal = (position-other.position) / d;
-        return BoundsCollisionResult(*this, other, penetration, normal);
-    }
+        // Correct: normal points from A toward B
+        Vector2f normal = n / d;
 
-// Circles are on same position
+        return BoundsCollisionResult(
+            *this, other, penetration, normal
+        );
+    }
     else
     {
-        // Choose random (but consistent) values
-        float penetration = A->radius;
-        Vector2f normal = Vector2f(1, 0);
-        return BoundsCollisionResult(*this, other, penetration, normal);
+        // Same center: arbitrary normal
+        float penetration = r;
+        Vector2f normal(1.0f, 0.0f);
+
+        return BoundsCollisionResult(
+            *this, other, penetration, normal
+        );
     }
 }
+
 
 sfp::BoundsCollisionResult sfp::CircleBounds::collideWithAABB(AABB& other)
 {

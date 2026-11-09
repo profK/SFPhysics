@@ -73,7 +73,7 @@ namespace MSTests
 			World world(Vector2f(0, 1));
 			PhysicsCircle ball;
 			ball.setCenter(Vector2f(400, 300));
-			ball.setRadius(20);
+			ball.setSize(Vector2f(20,20));
 			world.AddPhysicsBody(ball);
 
 			PhysicsRectangle floor;
@@ -95,8 +95,9 @@ namespace MSTests
 					lastTime = currentTime;
 				}
 				window.clear(Color(0, 0, 0));
-				window.draw(ball);
-				window.draw(floor);
+				//window.draw(ball);
+				//window.draw(floor);
+				world.VisualizeAllBounds(window);
 				window.display();
 			}
 		}
@@ -107,12 +108,12 @@ namespace MSTests
 			World world(Vector2f(0, 1));
 			PhysicsCircle ball;
 			ball.setCenter(Vector2f(400, 300));
-			ball.setRadius(20);
+			ball.setSize(Vector2f(20, 20));
 			world.AddPhysicsBody(ball);
 
 			PhysicsCircle target;
-			target.setCenter(Vector2f(370, 540));
-			target.setRadius(60);
+			target.setCenter(Vector2f(370, 500));
+			target.setSize(Vector2f(60, 60));
 			target.setStatic(true);
 			world.AddPhysicsBody(target);
 
@@ -129,8 +130,9 @@ namespace MSTests
 					lastTime = currentTime;
 				}
 				window.clear(Color(0, 0, 0));
-				window.draw(ball);
-				window.draw(target);
+				//window.draw(ball);
+				//window.draw(target);
+				world.VisualizeAllBounds(window);
 				window.display();
 			}
 		}
